@@ -1,0 +1,25 @@
+.jumbotron {
+    background-size: cover;
+    background-size: 100% 100%;
+    height: 100%;
+    Width: 25%;
+}
+
+body { 
+    background: #130613; 
+}
+
+#under {
+    position:relative;
+}
+#over {
+    position:absolute; 
+    width:100%; 
+    text-align:center; 
+    bottom:10%; 
+    right:0; 
+    left:0; 
+    z-index:3;
+    color:gold;
+    font-size: 40;
+}
