@@ -8,6 +8,10 @@
   },
   "author": "",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/ConorTighe1995/Final-Project---Regional-Management-System.git"
+  },
   "dependencies": {
     "body-parser": "^1.16.1",
     "ejs": "^2.5.6",
