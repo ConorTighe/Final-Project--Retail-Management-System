@@ -17,6 +17,8 @@ body {
     right:0; 
     left:0; 
     z-index:3;
+    font-family: 'Yesteryear', cursive;
+    text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
     color:gold;
     font-size: 40;
 }

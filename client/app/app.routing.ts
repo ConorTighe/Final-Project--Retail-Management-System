@@ -1,16 +1,18 @@
 import {ModuleWithProviders} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 
-import {UserComponent} from './components/user.compponent';
-import {AboutComponent} from './components/about.component';
+import {HomeComponent} from './home.component';
+import {EmployeesComponent} from './employees.component';
 
 const appRoutes: Routes = [
     {
         path:'',
-        component: UserComponent
+        component: HomeComponent
     },
     {
-        path: 'about',
-        component: AboutComponent
+        path: 'employees',
+        component: EmployeesComponent
     }
-]
+];
+
+export const routing: ModuleWithProviders = RouterModule.forRoot(appRoutes);
