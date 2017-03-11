@@ -10,18 +10,34 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
+var message_model_1 = require("./message.model");
+var message_service_1 = require("./message.service");
 var DetailsComponent = (function () {
-    function DetailsComponent() {
-        this.message = 'data here';
+    function DetailsComponent(messageService) {
+        this.messageService = messageService;
+        this.messages = [];
     }
+    DetailsComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.messageService.getMessages()
+            .subscribe(function (messages) { return _this.messages = messages; }, function (error) { return console.error(error); });
+    };
+    DetailsComponent.prototype.onAddMessage = function () {
+        var message = new message_model_1.Message(' It worked!');
+        this.messages.push(message);
+        this.messageService.saveMessage(message)
+            .subscribe(function () { return console.log('Success!'); }, function (error) { return console.error(error); });
+    };
     return DetailsComponent;
 }());
 DetailsComponent = __decorate([
     core_1.Component({
+        moduleId: module.id,
         selector: 'deta',
-        template: "\n    <div>\n      <h2>{{message}}</h2>\n    </div>\n  ",
+        templateUrl: 'details.component.html',
+        providers: [message_service_1.MessageService]
     }),
-    __metadata("design:paramtypes", [])
+    __metadata("design:paramtypes", [message_service_1.MessageService])
 ], DetailsComponent);
 exports.DetailsComponent = DetailsComponent;
 //# sourceMappingURL=details.component.js.map

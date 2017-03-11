@@ -1,17 +1,13 @@
 var express = require('express');
 var router = express.Router();
-var mongo = require("mongodb");
-var assert = require("assert");
 var Message = require('../models/message');
-
-var url = 'mongodb://localhost:27017/test';
 
 router.get('/', function(req, res, next){
     res.render('index.html');
 });
 
-router.get('/messages', function(req, res, next) {
-    Message.find(function(err, messages) {
+router.get('/message', function(req, res, next) {
+    message.find(function(err, messages) {
         if (err) {
             return res.status(500).json({
                 message: 'Error while fetching data!'
