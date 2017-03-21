@@ -3,4 +3,4 @@ import { AppModule } from './app.module';
 import { HttpModule } from '@angular/http';
 
 const platform = platformBrowserDynamic();
-platform.bootstrapModule(AppModule);
+platform.bootstrapModule(AppModule, [HttpModule]);

@@ -4,6 +4,8 @@ var favicon = require('serve-favicon');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 
+mongoose.Promise = require('bluebird');
+
 var index = require('./routes/index');
 
 var port = 3000;
@@ -33,5 +35,6 @@ app.use(function (req, res, next) {
 
 app.use('/', index);
 
-app.listen(port, "127.0.0.1");
+
+app.listen(port);
 console.log('Server started on port '+port);

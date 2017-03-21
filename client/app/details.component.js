@@ -10,7 +10,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var message_model_1 = require("./message.model");
 var message_service_1 = require("./message.service");
 var DetailsComponent = (function () {
     function DetailsComponent(messageService) {
@@ -21,12 +20,6 @@ var DetailsComponent = (function () {
         var _this = this;
         this.messageService.getMessages()
             .subscribe(function (messages) { return _this.messages = messages; }, function (error) { return console.error(error); });
-    };
-    DetailsComponent.prototype.onAddMessage = function () {
-        var message = new message_model_1.Message(' It worked!');
-        this.messages.push(message);
-        this.messageService.saveMessage(message)
-            .subscribe(function () { return console.log('Success!'); }, function (error) { return console.error(error); });
     };
     return DetailsComponent;
 }());

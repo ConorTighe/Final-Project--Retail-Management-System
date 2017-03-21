@@ -21,13 +21,4 @@ export class DetailsComponent implements OnInit {
             );
     }
 
-    onAddMessage() {
-        const message = new Message(' It worked!');
-        this.messages.push(message);
-        this.messageService.saveMessage(message)
-            .subscribe(
-                () => console.log('Success!'),
-                error => console.error(error)
-            );
-    }
 }
