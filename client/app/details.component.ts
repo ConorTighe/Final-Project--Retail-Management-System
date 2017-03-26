@@ -19,6 +19,16 @@ export class DetailsComponent implements OnInit {
                 messages => this.messages = messages,
                 error => console.error(error)
             );
+            console.log(this.messages);
+    }
+    
+    onDeleteMessage() {
+       this.messageService
+      .deleteServiceWithId("empId", "8631")
+      .subscribe(
+          result => console.log(result),
+          error => console.error(error)
+        );
     }
 
 }

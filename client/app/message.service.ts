@@ -17,7 +17,7 @@ export class MessageService {
                 let message;
                 for (let element of extracted.data) {
                     console.log(element.content);
-                    message = new Message(element.content, element.content, element.content, element.content ,element.content);
+                    message = new Message(element.firstName, element.lastName, element.empId, element.num ,element.job);
                     msgArray.push(message);
                 }
                 return msgArray;
@@ -31,4 +31,11 @@ export class MessageService {
         const headers = new Headers({'Content-Type': 'application/json'});
         return this.http.post('http://localhost:3000/message', body, {headers: headers});
     }
+    
+    deleteServiceWithId( key: string, val: string): Observable<any> {
+    console.log(key);
+    console.log(val);
+    return this.http
+      .delete('http://localhost:3000/messagedelete' + "/?" + key + "=" + val);
+  }
 }

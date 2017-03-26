@@ -1,17 +1,21 @@
-
 <div class="bs-example">
-    <div class="panel-group" id="accordion" *ngFor="let message of messages">
-        <div class="panel panel-default">
+    <div class="panel-group" [attr.id]="'accordion_' + i" *ngFor="let message of messages; let i = index;">
+        <div class="panel panel-default" >
             <div class="panel-heading">
                 <h4 class="panel-title">
-                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">{{ message.firstName }} {{ message.lastName }}</a>
+                    <a data-toggle="collapse" [attr.data-parent]="'#accordion_' + i" [attr.href]="'#collapseOne_' + i">{{ message.firstName }} {{ message.lastName }}</a>
                 </h4>
             </div>
-            <div id="collapseOne" class="panel-collapse collapse in">
+            <div [attr.id]="'collapseOne_' + i" class="panel-collapse collapse">
                 <div class="panel-body">
-                  details here {{ message.firstName }} {{ message.lastName }}
+                  details here {{ message.empId }} 
+                    <span class="pull-right">
+                        <button type="button" class="btn btn-danger" aria-label="Left Align" (click)="onDeleteMessage()">
+                        <span class="glyphicon glyphicon-remove-sign pull-right" aria-hidden="true"></span>
+                        </button>
+                    </span>    
                 </div>
             </div>
         </div>
-</div>
+    </div>
 </div>

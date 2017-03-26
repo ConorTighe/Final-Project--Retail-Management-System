@@ -1,0 +1,10 @@
+<div id="map"></div>
+
+<label for="basic-url">Add New Store</label>
+<div class="input-group">
+  <span class="input-group-addon" id="basic-addon3">Enter location for new store</span>
+  <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+</div>
+<ul class="list-group" *ngFor="let store of stores;">
+  <li class="list-group-item">First {{stores.storeName}}</li>
+</ul>

@@ -1,7 +1,7 @@
 {
-  "name": "mytasklist",
+  "name": "RMS",
   "version": "1.0.0",
-  "description": "Simple task manager",
+  "description": "A system for tracking stores and there employees",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -13,12 +13,12 @@
     "url": "git://github.com/ConorTighe1995/Final-Project---Regional-Management-System.git"
   },
   "dependencies": {
-    "body-parser": "^1.16.1",
+    "body-parser": "^1.17.1",
     "ejs": "^2.5.6",
-    "express": "^4.14.1",
-    "mongodb": "^2.2.24",
+    "express": "^4.15.2",
+    "mongodb": "^2.2.25",
     "mongojs": "^2.4.0",
-    "mongoose": "^4.8.6",
+    "mongoose": "^4.9.1",
     "serve-favicon": "^2.4.1"
   }
 }

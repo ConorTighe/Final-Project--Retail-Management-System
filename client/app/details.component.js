@@ -20,6 +20,12 @@ var DetailsComponent = (function () {
         var _this = this;
         this.messageService.getMessages()
             .subscribe(function (messages) { return _this.messages = messages; }, function (error) { return console.error(error); });
+        console.log(this.messages);
+    };
+    DetailsComponent.prototype.onDeleteMessage = function () {
+        this.messageService
+            .deleteServiceWithId("empId", "8631")
+            .subscribe(function (result) { return console.log(result); }, function (error) { return console.error(error); });
     };
     return DetailsComponent;
 }());

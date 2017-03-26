@@ -32,3 +32,11 @@ body {
     font-family: 'Yesteryear', cursive;
     color: gold;
 }
+
+#map {
+    height: 500px;
+}
+
+#submitBtn{
+     margin-bottom: 20px;
+}
