@@ -10,7 +10,8 @@ import { MessageService } from "./message.service";
 })
 export class DetailsComponent implements OnInit {
    messages: Message[] = [];
-
+   editemp: string;
+   
     constructor(private messageService: MessageService) {}
 
     ngOnInit() {
@@ -22,9 +23,18 @@ export class DetailsComponent implements OnInit {
             console.log(this.messages);
     }
     
-    onDeleteMessage() {
+    onDeleteMessage(id: string) {
        this.messageService
-      .deleteServiceWithId("empId", "8631")
+      .deleteServiceWithId("empId", id)
+      .subscribe(
+          result => console.log(result),
+          error => console.error(error)
+        );
+    }
+    
+    onUpdateMessage(key: string) {
+       this.messageService
+      .updateServiceWithId(key, this.editemp)
       .subscribe(
           result => console.log(result),
           error => console.error(error)

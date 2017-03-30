@@ -15,6 +15,7 @@ export class StoreService {
                 console.log("got here 1!");
                 const extracted = data.json();
                 const msgArray: Store[] = [];
+                console.log("got extracted here!");
                 let store;
                 for (let element of extracted.data) {
                     store = new Store(element.storeName, element.lat, element.long);

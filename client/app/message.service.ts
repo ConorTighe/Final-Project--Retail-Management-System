@@ -16,7 +16,7 @@ export class MessageService {
                 const msgArray: Message[] = [];
                 let message;
                 for (let element of extracted.data) {
-                    console.log(element.content);
+                    console.log(element.firstName);
                     message = new Message(element.firstName, element.lastName, element.empId, element.num ,element.job);
                     msgArray.push(message);
                 }
@@ -32,10 +32,20 @@ export class MessageService {
         return this.http.post('http://localhost:3000/message', body, {headers: headers});
     }
     
-    deleteServiceWithId( key: string, val: string): Observable<any> {
+  deleteServiceWithId( key: string, val: string): Observable<any> {
     console.log(key);
     console.log(val);
     return this.http
       .delete('http://localhost:3000/messagedelete' + "/?" + key + "=" + val);
+  }
+  
+  updateServiceWithId( key: string, val: string): Observable<any> {
+    console.log(key);
+    console.log(val);
+    const body = JSON.stringify(val);
+    console.log(val);
+    const headers = new Headers({'Content-Type': 'application/json'});
+    return this.http
+      .patch('http://localhost:3000/messageupdate' + "/?" + key + "=" + val, body,{headers: headers});
   }
 }

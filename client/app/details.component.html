@@ -8,9 +8,24 @@
             </div>
             <div [attr.id]="'collapseOne_' + i" class="panel-collapse collapse">
                 <div class="panel-body">
-                  details here {{ message.empId }} 
+                  <span class="pull-left">
+                    <label for="ex1">Employee Id: {{ message.empId }} </label>
+                        <input class="form-control" id="ex1" type="text" value="{{message.empId}}">
+                  </span>
+                    <div class="col-md-2 col-md-offset-5">
+                    <div class="dropup">
+                        <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Choose what to change
+                        <span class="caret"></span></button>
+                        <ul class="dropdown-menu">
+                        <li><a (click)="onUpdateMessage(firstName)">First Name</a></li>
+                        <li><a (click)="onUpdateMessage(lastName)">Last Name</a></li>
+                        <li><a href="#">JavaScript</a></li>
+                        </ul>
+                    </div>
+                    <input type="text" class="form-control" id="editemp" [(ngModel)]="editemp">
+                    </div>
                     <span class="pull-right">
-                        <button type="button" class="btn btn-danger" aria-label="Left Align" (click)="onDeleteMessage()">
+                        <button type="button" class="btn btn-danger" aria-label="Left Align" (click)="onDeleteMessage(message.empId)">
                         <span class="glyphicon glyphicon-remove-sign pull-right" aria-hidden="true"></span>
                         </button>
                     </span>    

@@ -17,25 +17,20 @@ export class MapsComponent implements OnInit {
    constructor(private storeService: StoreService) {}
     
   ngOnInit() {
-        var myLatLng = {lat: -25.363, lng: 131.044};
-
-        var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 4,
-          center: myLatLng
-        });
-
-        var marker = new google.maps.Marker({
-          position: myLatLng,
-          map: map,
-          title: 'Hello World!'
-        });
         
-         this.storeService.getStores()
+        this.storeService.getStores()
             .subscribe(
                 stores => this.stores = stores,
                 error => console.error(error)
             );
             console.log(this.stores);
+            
+        var ireLatLng = {lat: 53.1424, lng: -7.6921};   
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 8,
+          center: ireLatLng
+        });
+
       }
       
 }

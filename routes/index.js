@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var Message = require('../models/message');
-var Store = require('../models/stores');
+var Stores = require('../models/stores');
 
 router.get('/', function (req, res, next) {
     res.render('index.html');
@@ -21,9 +21,9 @@ router.get('/messages', function(req, res, next) {
     });
 });
 
-router.get('/store', function(req, res, next) {
-    Store.find(function(err, stores) {
-        console.log(stores);
+router.get('/stores', function(req, res, next) {
+    Stores.find(function(err, store) {
+        console.log(store);
         console.log("got here 2!");
         if (err) {
             return res.status(500).json({
@@ -31,7 +31,7 @@ router.get('/store', function(req, res, next) {
             });
         }
         res.status(200).json({
-            data: stores
+            data: store
         });
     });
 });
@@ -65,6 +65,11 @@ router.post('/message', function(req, res, next) {
         });
     });
 });
+
+router.patch('/messageupdate', function (req, res) {
+  console.log("Made it to update!");
+  console.log(req.body);
+})
 
 //DELETE a Blob by ID
 router.delete('/messagedelete', function (req, res){

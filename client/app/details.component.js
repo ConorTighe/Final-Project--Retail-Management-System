@@ -22,9 +22,14 @@ var DetailsComponent = (function () {
             .subscribe(function (messages) { return _this.messages = messages; }, function (error) { return console.error(error); });
         console.log(this.messages);
     };
-    DetailsComponent.prototype.onDeleteMessage = function () {
+    DetailsComponent.prototype.onDeleteMessage = function (id) {
         this.messageService
-            .deleteServiceWithId("empId", "8631")
+            .deleteServiceWithId("empId", id)
+            .subscribe(function (result) { return console.log(result); }, function (error) { return console.error(error); });
+    };
+    DetailsComponent.prototype.onUpdateMessage = function (key) {
+        this.messageService
+            .updateServiceWithId(key, this.editemp)
             .subscribe(function (result) { return console.log(result); }, function (error) { return console.error(error); });
     };
     return DetailsComponent;

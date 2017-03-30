@@ -25,7 +25,7 @@ var MessageService = (function () {
             var message;
             for (var _i = 0, _a = extracted.data; _i < _a.length; _i++) {
                 var element = _a[_i];
-                console.log(element.content);
+                console.log(element.firstName);
                 message = new message_model_1.Message(element.firstName, element.lastName, element.empId, element.num, element.job);
                 msgArray.push(message);
             }
@@ -44,6 +44,15 @@ var MessageService = (function () {
         console.log(val);
         return this.http
             .delete('http://localhost:3000/messagedelete' + "/?" + key + "=" + val);
+    };
+    MessageService.prototype.updateServiceWithId = function (key, val) {
+        console.log(key);
+        console.log(val);
+        var body = JSON.stringify(val);
+        console.log(val);
+        var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
+        return this.http
+            .patch('http://localhost:3000/messageupdate' + "/?" + key + "=" + val, body, { headers: headers });
     };
     return MessageService;
 }());

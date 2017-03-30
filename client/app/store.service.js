@@ -23,6 +23,7 @@ var StoreService = (function () {
             console.log("got here 1!");
             var extracted = data.json();
             var msgArray = [];
+            console.log("got extracted here!");
             var store;
             for (var _i = 0, _a = extracted.data; _i < _a.length; _i++) {
                 var element = _a[_i];

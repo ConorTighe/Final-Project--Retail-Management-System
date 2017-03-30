@@ -1,6 +1,7 @@
 import { NgModule, ApplicationRef }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
+import { FormsModule }   from '@angular/forms';
 
 import { MapsComponent } from './map.component';
 import { AppComponent } from './app.component';
@@ -10,7 +11,7 @@ import { routing } from './app.routing';
 import { DetailsComponent } from './details.component';
 
 @NgModule({
-  imports:      [ BrowserModule, routing, HttpModule],
+  imports:      [ BrowserModule, routing, HttpModule, FormsModule],
   declarations: [AppComponent, HomeComponent , EmployeesComponent, DetailsComponent, MapsComponent],
   exports: [ DetailsComponent ],
   bootstrap: [AppComponent]
