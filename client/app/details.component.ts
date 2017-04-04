@@ -29,20 +29,26 @@ export class DetailsComponent implements OnInit {
     }
     
     onDeleteMessage(id: string) {
+    var retVal = confirm("Do you want to continue ?");
+            if( retVal == true ){
        this.messageService
       .deleteServiceWithId("empId", id)
       .subscribe(
           result => console.log(result),
           error => console.error(error)
         );
+        }else{
+            alert("Delete cancled!");
+                  return false;
+        }
     }
     
-    onUpdateMessage() {
-         var retVal = confirm("Do you want to continue ?");
-               if( retVal == true ){
-        const message = new Message(this.fname,this.lname,this.empId,this.number,this.occu);
+    onUpdateMessage(id: string) {
+        var retVal = confirm("Do you want to continue ?");
+            if( retVal == true ){
+        const message = new Message(this.fname,this.lname,id,this.number,this.occu);
         console.log(this.fname);console.log(this.lname);
-        console.log(this.empId);console.log(this.occu);
+        console.log(id);console.log(this.occu);
         this.messages.push(message);
         this.messageService.updateServiceWithId(message)
             .subscribe(

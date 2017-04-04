@@ -3,6 +3,7 @@ var router = express.Router();
 var Message = require('../models/message');
 var Stores = require('../models/stores');
 var Products = require('../models/products');
+const fs = require('fs');
 
 router.get('/', function (req, res, next) {
     res.render('index.html');
@@ -96,36 +97,21 @@ router.put('/messageupdate/:empId', function (req, res) {
     });
 })
 
-//DELETE a Blob by ID
-router.delete('/messagedelete', function (req, res){
-    console.log("DELETE REACHED");
-    Message.findById(req.id, function (err, target) {
-        if (err) {
-            return console.error(err);
-        } else {
-            //remove it from Mongo
-            target.remove(function (err, target) {
-                if (err) {
-                    return console.error(err);
-                } else {
-                    //Returning success messages saying it was deleted
-                    console.log('DELETE removing ID: ' + target._id);
-                    res.format({
-                        //HTML returns us back to the main page, or you can create a success page
-                          html: function(){
-                               res.redirect("/employees");
-                         },
-                         //JSON returns the item with the message that is has been deleted
-                        json: function(){
-                               res.json({message : 'deleted',
-                                   item : target
-                               });
-                         }
-                      });
-                }
-            });
-        }
-    });
+router.delete('/messagedelete/:empId', function (req, res) {
+    
+  Message.remove({empId: req.params.empId}, function(err, message) {
+      console.log(message.empId);
+      console.log("got inside");
+    if(err) { 
+       return res.send({status: "200", response: "fail"});
+    }else{
+        console.log("it worked?");
+    }
+      
+ }); 
 });
+
+
+
 
 module.exports = router;

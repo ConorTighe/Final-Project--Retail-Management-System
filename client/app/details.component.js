@@ -24,17 +24,24 @@ var DetailsComponent = (function () {
         console.log(this.messages);
     };
     DetailsComponent.prototype.onDeleteMessage = function (id) {
-        this.messageService
-            .deleteServiceWithId("empId", id)
-            .subscribe(function (result) { return console.log(result); }, function (error) { return console.error(error); });
-    };
-    DetailsComponent.prototype.onUpdateMessage = function () {
         var retVal = confirm("Do you want to continue ?");
         if (retVal == true) {
-            var message = new message_model_1.Message(this.fname, this.lname, this.empId, this.number, this.occu);
+            this.messageService
+                .deleteServiceWithId("empId", id)
+                .subscribe(function (result) { return console.log(result); }, function (error) { return console.error(error); });
+        }
+        else {
+            alert("Delete cancled!");
+            return false;
+        }
+    };
+    DetailsComponent.prototype.onUpdateMessage = function (id) {
+        var retVal = confirm("Do you want to continue ?");
+        if (retVal == true) {
+            var message = new message_model_1.Message(this.fname, this.lname, id, this.number, this.occu);
             console.log(this.fname);
             console.log(this.lname);
-            console.log(this.empId);
+            console.log(id);
             console.log(this.occu);
             this.messages.push(message);
             this.messageService.updateServiceWithId(message)

@@ -17,11 +17,9 @@
                         <input class="form-control" type="text" placeholder="{{message.job}}" [(ngModel)]="occu">
                       <label for="ex1">Employee Phone: {{ message.num }} </label>
                         <input class="form-control" type="text" placeholder="{{message.num}}" [(ngModel)]="number">
-                      <label for="ex1">Id: {{ message.empId }} </label>
-                        <input class="form-control" type="text" placeholder="{{message.empId}}" [(ngModel)]="empId">
                   </span>
                     <div class="col-md-2 col-md-offset-5">
-                        <button type="button" class="btn btn-warning" aria-label="Left Align" (click)="onUpdateMessage()">
+                        <button type="button" class="btn btn-warning" aria-label="Left Align" (click)="onUpdateMessage(message.empId)">
                         <span class="glyphicon glyphicon-pencil pull-right" aria-hidden="true"></span>
                         </button>
                         </div>

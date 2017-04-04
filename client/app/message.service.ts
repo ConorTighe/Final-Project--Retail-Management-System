@@ -36,7 +36,7 @@ export class MessageService {
     console.log(key);
     console.log(val);
     return this.http
-      .delete('http://localhost:3000/messagedelete' + "/?" + key + "=" + val);
+      .delete('http://localhost:3000/messagedelete/'+ val);
   }
   
   updateServiceWithId(message: Message): Observable<any> {
@@ -46,6 +46,6 @@ export class MessageService {
         var emp = message.empId;
         console.log(emp);
         const headers = new Headers({'Content-Type': 'application/json'});
-        return this.http.put('http://localhost:3000/messageupdate/:emp', body, {headers: headers});
+        return this.http.put('http://localhost:3000/messageupdate/' + emp, body, {headers: headers});
   }
 }

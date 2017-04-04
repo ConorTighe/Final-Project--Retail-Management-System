@@ -43,7 +43,7 @@ var MessageService = (function () {
         console.log(key);
         console.log(val);
         return this.http
-            .delete('http://localhost:3000/messagedelete' + "/?" + key + "=" + val);
+            .delete('http://localhost:3000/messagedelete/' + val);
     };
     MessageService.prototype.updateServiceWithId = function (message) {
         console.log(message);
@@ -52,7 +52,7 @@ var MessageService = (function () {
         var emp = message.empId;
         console.log(emp);
         var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
-        return this.http.put('http://localhost:3000/messageupdate/:emp', body, { headers: headers });
+        return this.http.put('http://localhost:3000/messageupdate/' + emp, body, { headers: headers });
     };
     return MessageService;
 }());
