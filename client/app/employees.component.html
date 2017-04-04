@@ -22,23 +22,23 @@
         <div class="col-md-6 col-md-offset-3">
             <div class="form-group">
                     <label for="fname">First Name:</label>
-                    <input type="text" class="form-control" id="fname">
+                    <input type="text" class="form-control" id="fname" [(ngModel)]="fname">
                 </div>
                 <div class="form-group">
                     <label for="lname">Last Name:</label>
-                    <input type="text" class="form-control" id="lname">
+                    <input type="text" class="form-control" [(ngModel)]="lname">
                 </div>
                 <div class="form-group">
                     <label for="empid">Employee ID:</label>
-                    <input type="text" class="form-control" id="empid">
+                    <input type="text" class="form-control" [(ngModel)]="empId">
                 </div>
                 <div class="form-group">
                     <label for="num">Number:</label>
-                    <input type="text" class="form-control" id="num">
+                    <input type="text" class="form-control" [(ngModel)]="num">
                 </div>
             <div class="form-group">
                 <label for="jobs">Job:</label>
-            <select class="form-control" id="jobs">
+            <select class="form-control" [(ngModel)]="job">
                 <option>Sales</option>
                 <option>Technician</option>
                 <option>Manager</option>
@@ -46,7 +46,7 @@
             </div>
             <div class="form-group">
                 <label for="loc">Location:</label>
-            <select class="form-control" id="loc">
+            <select type="text" class="form-control" id="loc">
                 <option>1</option>
                 <option>2</option>
                 <option>3</option>

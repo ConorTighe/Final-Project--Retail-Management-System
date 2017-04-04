@@ -12,11 +12,18 @@ import { MessageService } from "./message.service";
 export class EmployeesComponent { 
 
     messages: Message[] = [];
-
+    fname: string;
+    empId: string;
+    lname: string;
+    num: string;
+    job: string;
+    
+    
     constructor(private messageService: MessageService) {}
 
-    onAddMessage() {
-        const message = new Message('Jim','Smith','EP100','08710101010','Manager');
+    onAddMessage() { 
+    
+        const message = new Message(this.fname,this.lname,this.empId,this.num,this.job);
         this.messages.push(message);
         this.messageService.saveMessage(message)
             .subscribe(

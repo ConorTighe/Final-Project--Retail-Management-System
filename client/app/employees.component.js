@@ -18,7 +18,7 @@ var EmployeesComponent = (function () {
         this.messages = [];
     }
     EmployeesComponent.prototype.onAddMessage = function () {
-        var message = new message_model_1.Message('Jim', 'Smith', 'EP100', '08710101010', 'Manager');
+        var message = new message_model_1.Message(this.fname, this.lname, this.empId, this.num, this.job);
         this.messages.push(message);
         this.messageService.saveMessage(message)
             .subscribe(function () { return console.log('Success!'); }, function (error) { return console.error(error); });

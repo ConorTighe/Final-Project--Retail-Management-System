@@ -39,13 +39,13 @@ export class MessageService {
       .delete('http://localhost:3000/messagedelete' + "/?" + key + "=" + val);
   }
   
-  updateServiceWithId( key: string, val: string): Observable<any> {
-    console.log(key);
-    console.log(val);
-    const body = JSON.stringify(val);
-    console.log(val);
-    const headers = new Headers({'Content-Type': 'application/json'});
-    return this.http
-      .patch('http://localhost:3000/messageupdate' + "/?" + key + "=" + val, body,{headers: headers});
+  updateServiceWithId(message: Message): Observable<any> {
+     console.log(message);
+        const body = JSON.stringify(message);
+        console.log(body);
+        var emp = message.empId;
+        console.log(emp);
+        const headers = new Headers({'Content-Type': 'application/json'});
+        return this.http.put('http://localhost:3000/messageupdate/:emp', body, {headers: headers});
   }
 }

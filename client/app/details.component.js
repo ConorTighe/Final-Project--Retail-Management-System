@@ -10,6 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
+var message_model_1 = require("./message.model");
 var message_service_1 = require("./message.service");
 var DetailsComponent = (function () {
     function DetailsComponent(messageService) {
@@ -27,10 +28,22 @@ var DetailsComponent = (function () {
             .deleteServiceWithId("empId", id)
             .subscribe(function (result) { return console.log(result); }, function (error) { return console.error(error); });
     };
-    DetailsComponent.prototype.onUpdateMessage = function (key) {
-        this.messageService
-            .updateServiceWithId(key, this.editemp)
-            .subscribe(function (result) { return console.log(result); }, function (error) { return console.error(error); });
+    DetailsComponent.prototype.onUpdateMessage = function () {
+        var retVal = confirm("Do you want to continue ?");
+        if (retVal == true) {
+            var message = new message_model_1.Message(this.fname, this.lname, this.empId, this.number, this.occu);
+            console.log(this.fname);
+            console.log(this.lname);
+            console.log(this.empId);
+            console.log(this.occu);
+            this.messages.push(message);
+            this.messageService.updateServiceWithId(message)
+                .subscribe(function () { return console.log('Success!'); }, function (error) { return console.error(error); });
+        }
+        else {
+            alert("Edit cancled!");
+            return false;
+        }
     };
     return DetailsComponent;
 }());

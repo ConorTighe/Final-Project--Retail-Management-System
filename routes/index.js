@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var Message = require('../models/message');
 var Stores = require('../models/stores');
+var Products = require('../models/products');
 
 router.get('/', function (req, res, next) {
     res.render('index.html');
@@ -36,6 +37,21 @@ router.get('/stores', function(req, res, next) {
     });
 });
 
+router.get('/products', function(req, res, next) {
+    Products.find(function(err, prod) {
+        console.log(prod);
+        console.log("got here 2!");
+        if (err) {
+            return res.status(500).json({
+                message: 'Error while fetching data!'
+            });
+        }
+        res.status(200).json({
+            data: prod
+        });
+    });
+});
+
 router.post('/message', function(req, res, next) {
     console.log(req.body.firstName);
     console.log(req.body.lastName);
@@ -66,9 +82,18 @@ router.post('/message', function(req, res, next) {
     });
 });
 
-router.patch('/messageupdate', function (req, res) {
-  console.log("Made it to update!");
-  console.log(req.body);
+router.put('/messageupdate/:empId', function (req, res) {
+    var values = req.body;
+    console.log(values);
+    var empId = req.params.empId;
+    console.log(empId);
+    Message.update({empId: empId}, values, function(err, values) {
+        if (!err) {
+            res.json("okay");
+        } else {
+            res.write("fail");
+        }
+    });
 })
 
 //DELETE a Blob by ID

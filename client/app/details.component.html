@@ -3,32 +3,33 @@
         <div class="panel panel-default" >
             <div class="panel-heading">
                 <h4 class="panel-title">
-                    <a data-toggle="collapse" [attr.data-parent]="'#accordion_' + i" [attr.href]="'#collapseOne_' + i">{{ message.firstName }} {{ message.lastName }}</a>
+                    <a data-toggle="collapse" [attr.data-parent]="'#accordion_' + i" [attr.href]="'#collapseOne_' + i">{{ message.empId }} {{ message._id }}</a>
                 </h4>
             </div>
             <div [attr.id]="'collapseOne_' + i" class="panel-collapse collapse">
                 <div class="panel-body">
                   <span class="pull-left">
-                    <label for="ex1">Employee Id: {{ message.empId }} </label>
-                        <input class="form-control" id="ex1" type="text" value="{{message.empId}}">
+                    <label for="ex1">First Name: {{ message.fname }} </label>
+                        <input class="form-control" type="text" placeholder="{{message.firstName}}" [(ngModel)]="fname">
+                      <label for="ex1">Last Name: {{ message.lname }} </label>
+                        <input class="form-control" type="text" placeholder="{{message.lastName}}" [(ngModel)]="lname">
+                      <label for="ex1">Employee Job: {{ message.job }} </label>
+                        <input class="form-control" type="text" placeholder="{{message.job}}" [(ngModel)]="occu">
+                      <label for="ex1">Employee Phone: {{ message.num }} </label>
+                        <input class="form-control" type="text" placeholder="{{message.num}}" [(ngModel)]="number">
+                      <label for="ex1">Id: {{ message.empId }} </label>
+                        <input class="form-control" type="text" placeholder="{{message.empId}}" [(ngModel)]="empId">
                   </span>
                     <div class="col-md-2 col-md-offset-5">
-                    <div class="dropup">
-                        <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Choose what to change
-                        <span class="caret"></span></button>
-                        <ul class="dropdown-menu">
-                        <li><a (click)="onUpdateMessage(firstName)">First Name</a></li>
-                        <li><a (click)="onUpdateMessage(lastName)">Last Name</a></li>
-                        <li><a href="#">JavaScript</a></li>
-                        </ul>
-                    </div>
-                    <input type="text" class="form-control" id="editemp" [(ngModel)]="editemp">
-                    </div>
+                        <button type="button" class="btn btn-warning" aria-label="Left Align" (click)="onUpdateMessage()">
+                        <span class="glyphicon glyphicon-pencil pull-right" aria-hidden="true"></span>
+                        </button>
+                        </div>
                     <span class="pull-right">
                         <button type="button" class="btn btn-danger" aria-label="Left Align" (click)="onDeleteMessage(message.empId)">
                         <span class="glyphicon glyphicon-remove-sign pull-right" aria-hidden="true"></span>
                         </button>
-                    </span>    
+                    </span>
                 </div>
             </div>
         </div>

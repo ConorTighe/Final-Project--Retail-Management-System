@@ -1,10 +1,29 @@
 <div id="map"></div>
-
-<label for="basic-url">Add New Store</label>
-<div class="input-group">
-  <span class="input-group-addon" id="basic-addon3">Enter location for new store</span>
-  <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+<div class="panel panel-default">
+  <!-- Default panel contents -->
+  <div class="panel-heading">Store Products</div>
+  <div class="panel-body">
+    <p>dassadda</p>
+  </div>
+    
+  <!-- Table -->
+  <table class="table table-striped" *ngFor="let product of products;">
+    <thead>
+      <tr>
+        <th> Product </th>
+        <th> Quantity </th>
+        <th> Price </th>
+      </tr>
+    </thead>
+      <tbody>
+      <tr>
+        <td>{{ product.productName }}</td>
+        <td><div> {{ product.qty }}
+            <button type="button" class="btn btn-info"><span class="glyphicon glyphicon-arrow-up"></span></button>
+            <button type="button" class="btn btn-info"><span class="glyphicon glyphicon-arrow-down"></span></button></div></td>
+        <td>{{ product.price }}</td>
+      </tr>
+      </tbody>
+  </table>
 </div>
-<ul class="list-group" *ngFor="let store of stores;">
-  <li class="list-group-item">First {{store.storeName}}</li>
-</ul>
+          

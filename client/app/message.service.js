@@ -45,14 +45,14 @@ var MessageService = (function () {
         return this.http
             .delete('http://localhost:3000/messagedelete' + "/?" + key + "=" + val);
     };
-    MessageService.prototype.updateServiceWithId = function (key, val) {
-        console.log(key);
-        console.log(val);
-        var body = JSON.stringify(val);
-        console.log(val);
+    MessageService.prototype.updateServiceWithId = function (message) {
+        console.log(message);
+        var body = JSON.stringify(message);
+        console.log(body);
+        var emp = message.empId;
+        console.log(emp);
         var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
-        return this.http
-            .patch('http://localhost:3000/messageupdate' + "/?" + key + "=" + val, body, { headers: headers });
+        return this.http.put('http://localhost:3000/messageupdate/:emp', body, { headers: headers });
     };
     return MessageService;
 }());
