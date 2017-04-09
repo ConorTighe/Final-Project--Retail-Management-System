@@ -4,6 +4,7 @@ import {Routes, RouterModule} from '@angular/router';
 import {HomeComponent} from './home.component';
 import {EmployeesComponent} from './employees.component';
 import {MapsComponent} from './map.component';
+import {SupportComponent} from './support.component';
 
 const appRoutes: Routes = [
     {
@@ -17,6 +18,10 @@ const appRoutes: Routes = [
     {
         path: 'maps',
         component: MapsComponent
+    },
+    {
+        path: 'support',
+        component: SupportComponent
     }
 ];
 

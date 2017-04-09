@@ -9,11 +9,12 @@ import { HomeComponent }  from './home.component';
 import { EmployeesComponent }  from './employees.component';
 import { routing } from './app.routing';
 import { DetailsComponent } from './details.component';
+import { SupportComponent } from './support.component';
 
 @NgModule({
   imports:      [ BrowserModule, routing, HttpModule, FormsModule],
-  declarations: [AppComponent, HomeComponent , EmployeesComponent, DetailsComponent, MapsComponent],
-  exports: [ DetailsComponent ],
+  declarations: [AppComponent, HomeComponent , EmployeesComponent, DetailsComponent, MapsComponent, SupportComponent],
+  exports: [ DetailsComponent, SupportComponent ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
