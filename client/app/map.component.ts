@@ -20,6 +20,7 @@ export class MapsComponent implements OnInit {
    constructor(private storeService: StoreService, private productService: ProductService) {}
    map: any;
    twittergrid: string;
+   newQty: number;
    
   ngOnInit() {
    
@@ -71,4 +72,23 @@ export class MapsComponent implements OnInit {
                 });
         }
     
-}
+    onPlusQty(qty: number){
+        this.newQty = qty + 1;
+        this.productService.patchQty(this.newQty)
+            .subscribe(
+                () => console.log('Success!'),
+                error => console.error(error)
+            );
+        }
+        
+    onMinusQty(qty: number){
+        this.newQty = qty - 1;
+        this.productService.patchQty(this.newQty)
+            .subscribe(
+                () => console.log('Success!'),
+                error => console.error(error)
+            );
+    
+        }
+    }
+    

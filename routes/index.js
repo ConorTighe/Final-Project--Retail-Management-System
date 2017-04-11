@@ -53,6 +53,19 @@ router.get('/products', function(req, res, next) {
     });
 });
 
+router.patch('/product/:qty', function (req, res) {
+  console.log('PATCH request to homepage');
+    var qty = req.params.qty;
+    console.log(qty);
+  Products.update({qty: qty}, function(err, values) {
+        if (!err) {
+            res.json("okay");
+        } else {
+            res.write("fail");
+        }
+    });
+});
+
 router.post('/message', function(req, res, next) {
     console.log(req.body.firstName);
     console.log(req.body.lastName);

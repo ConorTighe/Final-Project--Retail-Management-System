@@ -54,6 +54,16 @@ var MapsComponent = (function () {
             alert("Store Name: " + name + "\n" + "Latitude: " + lt + "\n" + "Longitude: " + ln + "\n");
         });
     };
+    MapsComponent.prototype.onPlusQty = function (qty) {
+        this.newQty = qty + 1;
+        this.productService.patchQty(this.newQty)
+            .subscribe(function () { return console.log('Success!'); }, function (error) { return console.error(error); });
+    };
+    MapsComponent.prototype.onMinusQty = function (qty) {
+        this.newQty = qty - 1;
+        this.productService.patchQty(this.newQty)
+            .subscribe(function () { return console.log('Success!'); }, function (error) { return console.error(error); });
+    };
     return MapsComponent;
 }());
 MapsComponent = __decorate([

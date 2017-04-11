@@ -33,6 +33,11 @@ var ProductService = (function () {
             return msgArray;
         });
     };
+    ProductService.prototype.patchQty = function (qty) {
+        console.log(qty);
+        var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
+        return this.http.patch('http://localhost:3000/product/' + qty, { headers: headers });
+    };
     return ProductService;
 }());
 ProductService = __decorate([

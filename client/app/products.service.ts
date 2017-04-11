@@ -24,5 +24,11 @@ export class ProductService {
                 return msgArray;
             });
     }
+    
+    patchQty(qty: number): Observable<any> {
+        console.log(qty);
+        const headers = new Headers({'Content-Type': 'application/json'});
+        return this.http.patch('http://localhost:3000/product/' + qty, {headers: headers});
+    }
 
 }
