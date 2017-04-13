@@ -17,7 +17,22 @@ export class MessageService {
                 let message;
                 for (let element of extracted.data) {
                     console.log(element.firstName);
-                    message = new Message(element.firstName, element.lastName, element.empId, element.num ,element.job);
+                    message = new Message(element.firstName, element.lastName, element.empId, element.num ,element.job,element.storeName, element.email);
+                    msgArray.push(message);
+                }
+                return msgArray;
+            });
+    }
+    
+     getMessagesByStore(store: string): Observable<any> {
+        return this.http.get('http://localhost:3000/messages/' + store)
+            .map( (data: Response) => {
+                const extracted = data.json();
+                const msgArray: Message[] = [];
+                let message;
+                for (let element of extracted.data) {
+                    console.log(element.firstName);
+                    message = new Message(element.firstName, element.lastName, element.empId, element.num ,element.job,element.storeName,element.email);
                     msgArray.push(message);
                 }
                 return msgArray;

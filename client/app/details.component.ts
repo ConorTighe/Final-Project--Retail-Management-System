@@ -1,23 +1,28 @@
 import { Component, OnInit } from '@angular/core';
 import { Message } from "./message.model";
 import { MessageService } from "./message.service";
+import { StoreService } from "./store.service";
+import { Store } from "./store.model";
 
 @Component({
   moduleId: module.id,
   selector: 'deta',
   templateUrl: 'details.component.html',
-  providers: [MessageService]
+  providers: [MessageService, StoreService]
 })
 export class DetailsComponent implements OnInit {
    
     messages: Message[] = [];
+    stores: Store[] = [];
     fname: string;
     lname: string;
-    empId: string;
-    number: string;
+    empId: Number;
+    number: Number;
     occu: string;
+    storeN: string;
+    email: string;
     
-    constructor(private messageService: MessageService) {}
+    constructor(private messageService: MessageService, private storeService: StoreService) {}
     
     ngOnInit() {
         this.messageService.getMessages()
@@ -26,6 +31,15 @@ export class DetailsComponent implements OnInit {
                 error => console.error(error)
             );
             console.log(this.messages);
+            
+        this.storeService.getStores()
+       .subscribe(
+           stores => {
+               this.stores = stores;
+               console.log(stores);  
+           },
+           error => console.error(error)
+        );
     }
     
     onDeleteMessage(id: string) {
@@ -43,10 +57,10 @@ export class DetailsComponent implements OnInit {
         }
     }
     
-    onUpdateMessage(id: string) {
+    onUpdateMessage(id: Number) {
         var retVal = confirm("Do you want to continue ?");
             if( retVal == true ){
-        const message = new Message(this.fname,this.lname,id,this.number,this.occu);
+        const message = new Message(this.fname,this.lname,id,this.number,this.occu,this.storeN,this.email);
         console.log(this.fname);console.log(this.lname);
         console.log(id);console.log(this.occu);
         this.messages.push(message);

@@ -33,6 +33,13 @@ var StoreService = (function () {
             return msgArray;
         });
     };
+    StoreService.prototype.saveStore = function (store) {
+        console.log(store);
+        var body = JSON.stringify(store);
+        console.log(body);
+        var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
+        return this.http.post('http://localhost:3000/store', body, { headers: headers });
+    };
     return StoreService;
 }());
 StoreService = __decorate([

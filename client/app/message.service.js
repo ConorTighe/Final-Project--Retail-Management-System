@@ -26,7 +26,22 @@ var MessageService = (function () {
             for (var _i = 0, _a = extracted.data; _i < _a.length; _i++) {
                 var element = _a[_i];
                 console.log(element.firstName);
-                message = new message_model_1.Message(element.firstName, element.lastName, element.empId, element.num, element.job);
+                message = new message_model_1.Message(element.firstName, element.lastName, element.empId, element.num, element.job, element.storeName, element.email);
+                msgArray.push(message);
+            }
+            return msgArray;
+        });
+    };
+    MessageService.prototype.getMessagesByStore = function (store) {
+        return this.http.get('http://localhost:3000/messages/' + store)
+            .map(function (data) {
+            var extracted = data.json();
+            var msgArray = [];
+            var message;
+            for (var _i = 0, _a = extracted.data; _i < _a.length; _i++) {
+                var element = _a[_i];
+                console.log(element.firstName);
+                message = new message_model_1.Message(element.firstName, element.lastName, element.empId, element.num, element.job, element.storeName, element.email);
                 msgArray.push(message);
             }
             return msgArray;

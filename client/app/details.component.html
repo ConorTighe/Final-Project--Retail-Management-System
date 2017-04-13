@@ -17,6 +17,12 @@
                         <input class="form-control" type="text" placeholder="{{message.job}}" [(ngModel)]="occu">
                       <label for="ex1">Employee Phone: {{ message.num }} </label>
                         <input class="form-control" type="text" placeholder="{{message.num}}" [(ngModel)]="number">
+                      <label for="ex1">Employee Store: {{ message.storeName }} </label>
+                        <select type="text" class="form-control" id="loc" [(ngModel)]="storeName">
+                            <option *ngFor="let store of stores;">{{ store.storeName }}</option>
+                        </select>
+                      <label for="ex1">Employee Email: {{ message.email }} </label>
+                        <input class="form-control" type="email" placeholder="{{message.email}}" [(ngModel)]="email">
                   </span>
                     <div class="col-md-2 col-md-offset-5">
                         <button type="button" class="btn btn-warning" aria-label="Left Align" (click)="onUpdateMessage(message.empId)">

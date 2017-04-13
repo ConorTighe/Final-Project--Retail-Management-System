@@ -24,5 +24,13 @@ export class StoreService {
                 return msgArray;
             });
     }
+    
+    saveStore(store: Store): Observable<any> {
+        console.log(store);
+        const body = JSON.stringify(store);
+        console.log(body);
+        const headers = new Headers({'Content-Type': 'application/json'});
+        return this.http.post('http://localhost:3000/store', body, {headers: headers});
+    }
 
 }

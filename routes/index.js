@@ -23,6 +23,22 @@ router.get('/messages', function(req, res, next) {
     });
 });
 
+router.get('/messages/:storeName', function(req, res, next) {
+    var storeName = req.params.storeName;
+    console.log(storeName);
+    Message.find({storeName: storeName}, function (err, messages) {
+        console.log(messages);
+        if (err) {
+            return res.status(500).json({
+                message: 'Error while fetching data!'
+            });
+        }
+        res.status(200).json({
+            data: messages
+        });    
+    });
+});
+
 router.get('/stores', function(req, res, next) {
     Stores.find(function(err, store) {
         console.log(store);
@@ -82,6 +98,29 @@ router.post('/message', function(req, res, next) {
     });
     console.log(message);
     message.save(function(err, result) {
+        if (err) {
+            console.log("ERROR");
+            return res.status(500).json({
+                message: 'Error while saving data!'
+            });
+        }
+        console.log("SUCCESS");
+        console.log(result);
+        res.status(201).json({
+            message: 'Saved data successfully'
+        });
+    });
+});
+
+router.post('/store', function(req, res, next) {
+   
+    var store = new Stores({
+        storeName: req.body.storeName,
+        lat: req.body.lat,
+        long: req.body.long
+    });
+    console.log(store);
+    store.save(function(err, result) {
         if (err) {
             console.log("ERROR");
             return res.status(500).json({

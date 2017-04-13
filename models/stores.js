@@ -3,8 +3,8 @@ var Schema = mongoose.Schema;
 
 var schema = new Schema({
     storeName: {type: String, required: true},
-    lat: {type: String, required: false},
-    long: {type: String, required: false},
+    lat: {type: Number, required: false},
+    long: {type: Number, required: false},
     },
     { collection : 'store' });
 

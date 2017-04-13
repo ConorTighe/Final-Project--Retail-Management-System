@@ -12,13 +12,24 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var message_model_1 = require("./message.model");
 var message_service_1 = require("./message.service");
+var store_service_1 = require("./store.service");
 var EmployeesComponent = (function () {
-    function EmployeesComponent(messageService) {
+    function EmployeesComponent(messageService, storeService) {
         this.messageService = messageService;
+        this.storeService = storeService;
         this.messages = [];
+        this.stores = [];
     }
+    EmployeesComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.storeService.getStores()
+            .subscribe(function (stores) {
+            _this.stores = stores;
+            console.log(stores);
+        }, function (error) { return console.error(error); });
+    };
     EmployeesComponent.prototype.onAddMessage = function () {
-        var message = new message_model_1.Message(this.fname, this.lname, this.empId, this.num, this.job);
+        var message = new message_model_1.Message(this.fname, this.lname, this.empId, this.num, this.job, this.storeName, this.email);
         this.messages.push(message);
         this.messageService.saveMessage(message)
             .subscribe(function () { return console.log('Success!'); }, function (error) { return console.error(error); });
@@ -30,9 +41,9 @@ EmployeesComponent = __decorate([
         moduleId: module.id,
         selector: 'Employees',
         templateUrl: 'employees.component.html',
-        providers: [message_service_1.MessageService]
+        providers: [message_service_1.MessageService, store_service_1.StoreService]
     }),
-    __metadata("design:paramtypes", [message_service_1.MessageService])
+    __metadata("design:paramtypes", [message_service_1.MessageService, store_service_1.StoreService])
 ], EmployeesComponent);
 exports.EmployeesComponent = EmployeesComponent;
 //# sourceMappingURL=employees.component.js.map

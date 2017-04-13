@@ -4,6 +4,8 @@ import { StoreService } from "./store.service";
 import { Store } from "./store.model";
 import { ProductService } from "./products.service";
 import { Product } from "./product.model";
+import { Message } from "./message.model";
+import { MessageService } from "./message.service";
 
 declare var google: any;
 
@@ -11,16 +13,18 @@ declare var google: any;
   moduleId: module.id,
   selector: 'map',
   templateUrl: 'map.component.html',
-  providers: [StoreService,ProductService]
+  providers: [StoreService,ProductService,MessageService]
 })
 export class MapsComponent implements OnInit {
    stores: Store[] = [];
    products: Product[] = [];
    
-   constructor(private storeService: StoreService, private productService: ProductService) {}
+   constructor(private storeService: StoreService, private productService: ProductService, private messageService: MessageService) {}
    map: any;
    twittergrid: string;
    newQty: number;
+   emps: string;
+   
    
   ngOnInit() {
    
@@ -53,11 +57,44 @@ export class MapsComponent implements OnInit {
            error => console.error(error)
     );
     
+     google.maps.event.addListener(this.map, 'click', (event)=> {
+        console.log(event.latLng);
+        var lt = event.latLng.lat;
+        var ln = event.latLng.lng;
+        console.log(lt());
+        console.log(ln());
+        this.onStoreMarker(event.latLng.lat(),event.latLng.lng());
+    });
+    
+    }
+    
+    onStoreMarker(lt: number,ln: number) {
+        var newStore = prompt("Please enter your store name", "Store Name");
+        console.log(newStore);
+        if(newStore != null){
+        var location = {lat: lt, lng: ln};
+        var marker = new google.maps.Marker({
+            position: location, 
+            map: this.map,
+            title: newStore,
+        });
+        
+        const newStorePost = new Store(newStore,lt,ln);
+        this.storeService.saveStore(newStorePost)
+            .subscribe(
+                () => console.log('Success!'),
+                error => console.error(error)
+            );
+            
+        marker.addListener('click', ()=> {
+              this.onListEmp(newStore);
+            });
+        }
     }
     
     onAddMarker(name: string,lt: string,ln: string) {
-            var lat = parseInt(lt);
-            var long = parseInt(ln);
+            var lat = lt;
+            var long = ln;
             var myLatLng = {lat: lat, lng: long},
                 map = this.map,
                 marker = new google.maps.Marker({
@@ -66,11 +103,25 @@ export class MapsComponent implements OnInit {
                     title: name,
                 });
                 
-                marker.addListener('click', function() {
-                    console.log(name);
-                    alert("Store Name: " + name + "\n" + "Latitude: " + lt + "\n" + "Longitude: " + ln + "\n");
-                });
+                marker.addListener('click', ()=> {
+                    this.onListEmp(name);
+            });
         }
+        
+    onListEmp(name : string){
+    this.emps = "Employees working here:\n";
+        this.messageService.getMessagesByStore(name)
+                    .subscribe(
+               stores => {
+               stores.forEach(store => {
+                  this.emps += store.job + " - " + store.firstName + " " + store.lastName + "\n";
+            })
+               console.log(this.emps);
+               alert(this.emps);
+            },
+            error => console.error(error)
+        );
+    }
     
     onPlusQty(qty: number){
         this.newQty = qty + 1;
@@ -90,5 +141,6 @@ export class MapsComponent implements OnInit {
             );
     
         }
+
     }
     

@@ -46,15 +46,16 @@
             </div>
             <div class="form-group">
                 <label for="loc">Location:</label>
-            <select type="text" class="form-control" id="loc">
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
+            <select type="text" class="form-control" id="loc" [(ngModel)]="storeName">
+                <option *ngFor="let store of stores;">{{ store.storeName }}</option>
             </select>
             </div>
+            <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" class="form-control" [(ngModel)]="email">
+            </div>
                 
-            <button id="submitBtn" class="btn btn-primary" (click)="onAddMessage()">New Random Message</button>
+            <button id="submitBtn" class="btn btn-primary" (click)="onAddMessage()">Submit employee</button>
         </div>
     </div>
     </div>
