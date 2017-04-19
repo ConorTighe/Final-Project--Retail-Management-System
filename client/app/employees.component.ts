@@ -20,7 +20,7 @@ export class EmployeesComponent implements OnInit {
     num: Number;
     email: string;
     job: string;
-    storeName: string;
+    storeN: string;
     stores: Store[] = [];
     
     
@@ -40,8 +40,9 @@ export class EmployeesComponent implements OnInit {
 
     onAddMessage() { 
     
-        const message = new Message(this.fname,this.lname,this.empId,this.num,this.job,this.storeName,this.email);
+        const message = new Message(this.fname,this.lname,this.empId,this.num,this.job,this.storeN,this.email);
         console.log(message);
+        console.log(this.storeN);
         this.messages.push(message);
         this.messageService.saveMessage(message)
             .subscribe(

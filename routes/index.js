@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var Message = require('../models/message');
+var Message = require('../models/employee');
 var Stores = require('../models/stores');
 var Products = require('../models/products');
 const fs = require('fs');
@@ -23,12 +23,13 @@ router.get('/RMS/employees', function(req, res, next) {
     });
 });
 
-router.get('/RMS/messages/:storeName', function(req, res, next) {
+router.get('/RMS/employees/:storeName', function(req, res, next) {
     var storeName = req.params.storeName;
     console.log(storeName);
     Message.find({storeName: storeName}, function (err, messages) {
         console.log(messages);
         if (err) {
+            console.log(err);
             return res.status(500).json({
                 message: 'Error while fetching data!'
             });

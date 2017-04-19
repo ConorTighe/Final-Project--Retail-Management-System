@@ -11,7 +11,7 @@ var index = require('./routes/index');
 var port = 3000;
 
 var app = express();
-mongoose.connect('localhost:27017/eggs');
+mongoose.connect('localhost:27017/RMS');
 mongoose.BatchSize = 300;
 //View Engine
 app.set('views', path.join(__dirname, 'views'));

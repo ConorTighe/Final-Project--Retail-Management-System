@@ -42,11 +42,17 @@
                 <option>Sales</option>
                 <option>Technician</option>
                 <option>Manager</option>
+                <option>Customer Support</option>
+                <option>Customer Support Leader</option>
+                <option>Programmer</option>
+                <option>Operations Manager</option>
+                <option>Supplier</option>
+                <option>Security</option>
             </select>
             </div>
             <div class="form-group">
                 <label for="loc">Location:</label>
-            <select type="text" class="form-control" id="loc" [(ngModel)]="storeName">
+            <select type="text" class="form-control" id="loc" [(ngModel)]="storeN">
                 <option *ngFor="let store of stores;">{{ store.storeName }}</option>
             </select>
             </div>

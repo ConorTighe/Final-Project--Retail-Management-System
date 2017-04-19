@@ -8,4 +8,4 @@ var schema = new Schema({
     },
     { collection : 'store' });
 
-module.exports = mongoose.model('Stores', schema);
+module.exports = mongoose.model('stores', schema);
