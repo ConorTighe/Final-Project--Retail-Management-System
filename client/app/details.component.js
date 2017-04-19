@@ -10,8 +10,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var message_model_1 = require("./message.model");
-var message_service_1 = require("./message.service");
+var employee_model_1 = require("./employee.model");
+var employee_service_1 = require("./employee.service");
 var store_service_1 = require("./store.service");
 var DetailsComponent = (function () {
     function DetailsComponent(messageService, storeService) {
@@ -46,11 +46,12 @@ var DetailsComponent = (function () {
     DetailsComponent.prototype.onUpdateMessage = function (id) {
         var retVal = confirm("Do you want to continue ?");
         if (retVal == true) {
-            var message = new message_model_1.Message(this.fname, this.lname, id, this.number, this.occu, this.storeN, this.email);
+            var message = new employee_model_1.Message(this.fname, this.lname, id, this.number, this.occu, this.storeN, this.email);
             console.log(this.fname);
             console.log(this.lname);
             console.log(id);
             console.log(this.occu);
+            console.log(this.storeN);
             this.messages.push(message);
             this.messageService.updateServiceWithId(message)
                 .subscribe(function () { return console.log('Success!'); }, function (error) { return console.error(error); });
@@ -67,9 +68,9 @@ DetailsComponent = __decorate([
         moduleId: module.id,
         selector: 'deta',
         templateUrl: 'details.component.html',
-        providers: [message_service_1.MessageService, store_service_1.StoreService]
+        providers: [employee_service_1.MessageService, store_service_1.StoreService]
     }),
-    __metadata("design:paramtypes", [message_service_1.MessageService, store_service_1.StoreService])
+    __metadata("design:paramtypes", [employee_service_1.MessageService, store_service_1.StoreService])
 ], DetailsComponent);
 exports.DetailsComponent = DetailsComponent;
 //# sourceMappingURL=details.component.js.map

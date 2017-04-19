@@ -9,7 +9,7 @@ router.get('/', function (req, res, next) {
     res.render('index.html');
 });
 
-router.get('/messages', function(req, res, next) {
+router.get('/RMS/employees', function(req, res, next) {
     Message.find(function(err, messages) {
         console.log(messages);
         if (err) {
@@ -23,7 +23,7 @@ router.get('/messages', function(req, res, next) {
     });
 });
 
-router.get('/messages/:storeName', function(req, res, next) {
+router.get('/RMS/messages/:storeName', function(req, res, next) {
     var storeName = req.params.storeName;
     console.log(storeName);
     Message.find({storeName: storeName}, function (err, messages) {
@@ -39,7 +39,7 @@ router.get('/messages/:storeName', function(req, res, next) {
     });
 });
 
-router.get('/stores', function(req, res, next) {
+router.get('/RMS/stores', function(req, res, next) {
     Stores.find(function(err, store) {
         console.log(store);
         console.log("got here 2!");
@@ -54,7 +54,7 @@ router.get('/stores', function(req, res, next) {
     });
 });
 
-router.get('/products', function(req, res, next) {
+router.get('/RMS/products', function(req, res, next) {
     Products.find(function(err, prod) {
         console.log(prod);
         console.log("got here 2!");
@@ -69,7 +69,7 @@ router.get('/products', function(req, res, next) {
     });
 });
 
-router.patch('/product/:qty', function (req, res) {
+router.patch('/RMS/product/:qty', function (req, res) {
   console.log('PATCH request to homepage');
     var qty = req.params.qty;
     console.log(qty);
@@ -82,24 +82,28 @@ router.patch('/product/:qty', function (req, res) {
     });
 });
 
-router.post('/message', function(req, res, next) {
+router.post('/RMS/employee', function(req, res, next) {
     console.log(req.body.firstName);
     console.log(req.body.lastName);
     console.log(req.body.empId);
     console.log(req.body.num);
     console.log(req.body.job);
+    console.log(req.body.storeName);
+    console.log(req.body.email);
     
     var message = new Message({
         firstName: req.body.firstName,
         lastName: req.body.lastName,
         empId: req.body.empId,
         num: req.body.num,
-        job: req.body.job
+        job: req.body.job,
+        storeName: req.body.storeName,
+        email: req.body.email
     });
     console.log(message);
     message.save(function(err, result) {
         if (err) {
-            console.log("ERROR");
+            console.log(err);
             return res.status(500).json({
                 message: 'Error while saving data!'
             });
@@ -112,7 +116,7 @@ router.post('/message', function(req, res, next) {
     });
 });
 
-router.post('/store', function(req, res, next) {
+router.post('/RMS/store', function(req, res, next) {
    
     var store = new Stores({
         storeName: req.body.storeName,
@@ -135,7 +139,7 @@ router.post('/store', function(req, res, next) {
     });
 });
 
-router.put('/messageupdate/:empId', function (req, res) {
+router.put('/RMS/employeeupdate/:empId', function (req, res) {
     var values = req.body;
     console.log(values);
     var empId = req.params.empId;
@@ -149,7 +153,7 @@ router.put('/messageupdate/:empId', function (req, res) {
     });
 })
 
-router.delete('/messagedelete/:empId', function (req, res) {
+router.delete('/RMS/employeedelete/:empId', function (req, res) {
     
   Message.remove({empId: req.params.empId}, function(err, message) {
       console.log(message.empId);

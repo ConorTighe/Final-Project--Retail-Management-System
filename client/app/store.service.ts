@@ -10,7 +10,7 @@ export class StoreService {
     constructor(private http: Http) {}
 
     getStores(): Observable<any> {
-        return this.http.get('http://localhost:3000/stores')
+        return this.http.get('http://localhost:3000/RMS/stores')
             .map( (data: Response) => {
                 console.log("got here 1!");
                 const extracted = data.json();
@@ -30,7 +30,7 @@ export class StoreService {
         const body = JSON.stringify(store);
         console.log(body);
         const headers = new Headers({'Content-Type': 'application/json'});
-        return this.http.post('http://localhost:3000/store', body, {headers: headers});
+        return this.http.post('http://localhost:3000/RMS/store', body, {headers: headers});
     }
 
 }

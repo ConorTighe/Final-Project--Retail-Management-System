@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Message } from "./message.model";
-import { MessageService } from "./message.service";
+import { Message } from "./employee.model";
+import { MessageService } from "./employee.service";
 import { StoreService } from "./store.service";
 import { Store } from "./store.model";
 
@@ -62,7 +62,7 @@ export class DetailsComponent implements OnInit {
             if( retVal == true ){
         const message = new Message(this.fname,this.lname,id,this.number,this.occu,this.storeN,this.email);
         console.log(this.fname);console.log(this.lname);
-        console.log(id);console.log(this.occu);
+        console.log(id);console.log(this.occu);console.log(this.storeN);
         this.messages.push(message);
         this.messageService.updateServiceWithId(message)
             .subscribe(

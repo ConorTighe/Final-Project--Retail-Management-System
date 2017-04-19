@@ -18,7 +18,7 @@ var ProductService = (function () {
         this.http = http;
     }
     ProductService.prototype.getProducts = function () {
-        return this.http.get('http://localhost:3000/products')
+        return this.http.get('http://localhost:3000/RMS/products')
             .map(function (data) {
             console.log("got here products!");
             var extracted = data.json();
@@ -36,7 +36,7 @@ var ProductService = (function () {
     ProductService.prototype.patchQty = function (qty) {
         console.log(qty);
         var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
-        return this.http.patch('http://localhost:3000/product/' + qty, { headers: headers });
+        return this.http.patch('http://localhost:3000/RMS/product/' + qty, { headers: headers });
     };
     return ProductService;
 }());

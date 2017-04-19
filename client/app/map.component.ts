@@ -4,8 +4,8 @@ import { StoreService } from "./store.service";
 import { Store } from "./store.model";
 import { ProductService } from "./products.service";
 import { Product } from "./product.model";
-import { Message } from "./message.model";
-import { MessageService } from "./message.service";
+import { Message } from "./employee.model";
+import { MessageService } from "./employee.service";
 
 declare var google: any;
 

@@ -18,7 +18,7 @@
                       <label for="ex1">Employee Phone: {{ message.num }} </label>
                         <input class="form-control" type="text" placeholder="{{message.num}}" [(ngModel)]="number">
                       <label for="ex1">Employee Store: {{ message.storeName }} </label>
-                        <select type="text" class="form-control" id="loc" [(ngModel)]="storeName">
+                        <select type="text" class="form-control" id="loc" [(ngModel)]="storeN">
                             <option *ngFor="let store of stores;">{{ store.storeName }}</option>
                         </select>
                       <label for="ex1">Employee Email: {{ message.email }} </label>

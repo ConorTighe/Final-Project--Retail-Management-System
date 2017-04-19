@@ -18,7 +18,7 @@ var StoreService = (function () {
         this.http = http;
     }
     StoreService.prototype.getStores = function () {
-        return this.http.get('http://localhost:3000/stores')
+        return this.http.get('http://localhost:3000/RMS/stores')
             .map(function (data) {
             console.log("got here 1!");
             var extracted = data.json();
@@ -38,7 +38,7 @@ var StoreService = (function () {
         var body = JSON.stringify(store);
         console.log(body);
         var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
-        return this.http.post('http://localhost:3000/store', body, { headers: headers });
+        return this.http.post('http://localhost:3000/RMS/store', body, { headers: headers });
     };
     return StoreService;
 }());

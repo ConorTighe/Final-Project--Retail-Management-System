@@ -13,7 +13,7 @@ var core_1 = require("@angular/core");
 var store_service_1 = require("./store.service");
 var store_model_1 = require("./store.model");
 var products_service_1 = require("./products.service");
-var message_service_1 = require("./message.service");
+var employee_service_1 = require("./employee.service");
 var MapsComponent = (function () {
     function MapsComponent(storeService, productService, messageService) {
         this.storeService = storeService;
@@ -113,9 +113,9 @@ MapsComponent = __decorate([
         moduleId: module.id,
         selector: 'map',
         templateUrl: 'map.component.html',
-        providers: [store_service_1.StoreService, products_service_1.ProductService, message_service_1.MessageService]
+        providers: [store_service_1.StoreService, products_service_1.ProductService, employee_service_1.MessageService]
     }),
-    __metadata("design:paramtypes", [store_service_1.StoreService, products_service_1.ProductService, message_service_1.MessageService])
+    __metadata("design:paramtypes", [store_service_1.StoreService, products_service_1.ProductService, employee_service_1.MessageService])
 ], MapsComponent);
 exports.MapsComponent = MapsComponent;
 //# sourceMappingURL=map.component.js.map

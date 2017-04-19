@@ -10,8 +10,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var message_model_1 = require("./message.model");
-var message_service_1 = require("./message.service");
+var employee_model_1 = require("./employee.model");
+var employee_service_1 = require("./employee.service");
 var store_service_1 = require("./store.service");
 var EmployeesComponent = (function () {
     function EmployeesComponent(messageService, storeService) {
@@ -29,7 +29,8 @@ var EmployeesComponent = (function () {
         }, function (error) { return console.error(error); });
     };
     EmployeesComponent.prototype.onAddMessage = function () {
-        var message = new message_model_1.Message(this.fname, this.lname, this.empId, this.num, this.job, this.storeName, this.email);
+        var message = new employee_model_1.Message(this.fname, this.lname, this.empId, this.num, this.job, this.storeName, this.email);
+        console.log(message);
         this.messages.push(message);
         this.messageService.saveMessage(message)
             .subscribe(function () { return console.log('Success!'); }, function (error) { return console.error(error); });
@@ -41,9 +42,9 @@ EmployeesComponent = __decorate([
         moduleId: module.id,
         selector: 'Employees',
         templateUrl: 'employees.component.html',
-        providers: [message_service_1.MessageService, store_service_1.StoreService]
+        providers: [employee_service_1.MessageService, store_service_1.StoreService]
     }),
-    __metadata("design:paramtypes", [message_service_1.MessageService, store_service_1.StoreService])
+    __metadata("design:paramtypes", [employee_service_1.MessageService, store_service_1.StoreService])
 ], EmployeesComponent);
 exports.EmployeesComponent = EmployeesComponent;
 //# sourceMappingURL=employees.component.js.map

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Message } from "./message.model";
-import { MessageService } from "./message.service";
+import { Message } from "./employee.model";
+import { MessageService } from "./employee.service";
 import { StoreService } from "./store.service";
 import { Store } from "./store.model";
 
@@ -40,7 +40,8 @@ export class EmployeesComponent implements OnInit {
 
     onAddMessage() { 
     
-        const message = new Message(this.fname,this.lname,this.empId,this.num,this.job,this.storeName, this.email);
+        const message = new Message(this.fname,this.lname,this.empId,this.num,this.job,this.storeName,this.email);
+        console.log(message);
         this.messages.push(message);
         this.messageService.saveMessage(message)
             .subscribe(

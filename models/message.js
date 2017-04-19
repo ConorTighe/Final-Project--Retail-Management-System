@@ -7,10 +7,11 @@ var schema = new Schema({
     lastName: {type: String, required: true},
     empId: {type: Number, required: true, unique : true},
     num: {type: Number, required: true},
-    email: {type: String, required: true},
     job: {type: String, required: true},
     storeName: {type: String, required: true},
-});
+    email: {type: String, required: true}
+    },
+    { collection : 'messages' });
 
 schema.plugin(uniqueValidator);
 

@@ -12,13 +12,13 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var http_1 = require("@angular/http");
 require("rxjs/Rx");
-var message_model_1 = require("./message.model");
+var employee_model_1 = require("./employee.model");
 var MessageService = (function () {
     function MessageService(http) {
         this.http = http;
     }
     MessageService.prototype.getMessages = function () {
-        return this.http.get('http://localhost:3000/messages')
+        return this.http.get('http://localhost:3000/RMS/employees')
             .map(function (data) {
             var extracted = data.json();
             var msgArray = [];
@@ -26,14 +26,14 @@ var MessageService = (function () {
             for (var _i = 0, _a = extracted.data; _i < _a.length; _i++) {
                 var element = _a[_i];
                 console.log(element.firstName);
-                message = new message_model_1.Message(element.firstName, element.lastName, element.empId, element.num, element.job, element.storeName, element.email);
+                message = new employee_model_1.Message(element.firstName, element.lastName, element.empId, element.num, element.job, element.storeName, element.email);
                 msgArray.push(message);
             }
             return msgArray;
         });
     };
     MessageService.prototype.getMessagesByStore = function (store) {
-        return this.http.get('http://localhost:3000/messages/' + store)
+        return this.http.get('http://localhost:3000/RMS/employees/' + store)
             .map(function (data) {
             var extracted = data.json();
             var msgArray = [];
@@ -41,7 +41,7 @@ var MessageService = (function () {
             for (var _i = 0, _a = extracted.data; _i < _a.length; _i++) {
                 var element = _a[_i];
                 console.log(element.firstName);
-                message = new message_model_1.Message(element.firstName, element.lastName, element.empId, element.num, element.job, element.storeName, element.email);
+                message = new employee_model_1.Message(element.firstName, element.lastName, element.empId, element.num, element.job, element.storeName, element.email);
                 msgArray.push(message);
             }
             return msgArray;
@@ -52,13 +52,13 @@ var MessageService = (function () {
         var body = JSON.stringify(message);
         console.log(body);
         var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
-        return this.http.post('http://localhost:3000/message', body, { headers: headers });
+        return this.http.post('http://localhost:3000/RMS/employee', body, { headers: headers });
     };
     MessageService.prototype.deleteServiceWithId = function (key, val) {
         console.log(key);
         console.log(val);
         return this.http
-            .delete('http://localhost:3000/messagedelete/' + val);
+            .delete('http://localhost:3000/RMS/messagedelete/' + val);
     };
     MessageService.prototype.updateServiceWithId = function (message) {
         console.log(message);
@@ -67,7 +67,7 @@ var MessageService = (function () {
         var emp = message.empId;
         console.log(emp);
         var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
-        return this.http.put('http://localhost:3000/messageupdate/' + emp, body, { headers: headers });
+        return this.http.put('http://localhost:3000/RMS/employeeupdate/' + emp, body, { headers: headers });
     };
     return MessageService;
 }());
@@ -76,4 +76,4 @@ MessageService = __decorate([
     __metadata("design:paramtypes", [http_1.Http])
 ], MessageService);
 exports.MessageService = MessageService;
-//# sourceMappingURL=message.service.js.map
+//# sourceMappingURL=employee.service.js.map

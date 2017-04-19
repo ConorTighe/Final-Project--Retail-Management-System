@@ -3,14 +3,14 @@ import { Http, Headers, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/Rx';
 
-import { Message } from "./message.model";
+import { Message } from "./employee.model";
 
 @Injectable()
 export class MessageService {
     constructor(private http: Http) {}
 
     getMessages(): Observable<any> {
-        return this.http.get('http://localhost:3000/messages')
+        return this.http.get('http://localhost:3000/RMS/employees')
             .map( (data: Response) => {
                 const extracted = data.json();
                 const msgArray: Message[] = [];
@@ -25,7 +25,7 @@ export class MessageService {
     }
     
      getMessagesByStore(store: string): Observable<any> {
-        return this.http.get('http://localhost:3000/messages/' + store)
+        return this.http.get('http://localhost:3000/RMS/employees/' + store)
             .map( (data: Response) => {
                 const extracted = data.json();
                 const msgArray: Message[] = [];
@@ -44,14 +44,14 @@ export class MessageService {
         const body = JSON.stringify(message);
         console.log(body);
         const headers = new Headers({'Content-Type': 'application/json'});
-        return this.http.post('http://localhost:3000/message', body, {headers: headers});
+        return this.http.post('http://localhost:3000/RMS/employee', body, {headers: headers});
     }
     
   deleteServiceWithId( key: string, val: string): Observable<any> {
     console.log(key);
     console.log(val);
     return this.http
-      .delete('http://localhost:3000/messagedelete/'+ val);
+      .delete('http://localhost:3000/RMS/messagedelete/'+ val);
   }
   
   updateServiceWithId(message: Message): Observable<any> {
@@ -61,6 +61,6 @@ export class MessageService {
         var emp = message.empId;
         console.log(emp);
         const headers = new Headers({'Content-Type': 'application/json'});
-        return this.http.put('http://localhost:3000/messageupdate/' + emp, body, {headers: headers});
+        return this.http.put('http://localhost:3000/RMS/employeeupdate/' + emp, body, {headers: headers});
   }
 }

@@ -10,7 +10,7 @@ export class ProductService {
     constructor(private http: Http) {}
 
     getProducts(): Observable<any> {
-        return this.http.get('http://localhost:3000/products')
+        return this.http.get('http://localhost:3000/RMS/products')
             .map( (data: Response) => {
                 console.log("got here products!");
                 const extracted = data.json();
@@ -28,7 +28,7 @@ export class ProductService {
     patchQty(qty: number): Observable<any> {
         console.log(qty);
         const headers = new Headers({'Content-Type': 'application/json'});
-        return this.http.patch('http://localhost:3000/product/' + qty, {headers: headers});
+        return this.http.patch('http://localhost:3000/RMS/product/' + qty, {headers: headers});
     }
 
 }

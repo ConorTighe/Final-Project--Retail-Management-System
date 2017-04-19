@@ -8,8 +8,9 @@ var Message = (function () {
         this.num = num;
         this.job = job;
         this.storeName = storeName;
+        this.email = email;
     }
     return Message;
 }());
 exports.Message = Message;
-//# sourceMappingURL=message.model.js.map
+//# sourceMappingURL=employee.model.js.map
