@@ -1,4 +1,4 @@
-# Retail Managment system - Final Year Project
+# Retail Managment System - Final Year Project
 To read the full documentation of the project in word download it from above.
 
 ## Technologies used:
@@ -12,7 +12,7 @@ To read the full documentation of the project in word download it from above.
 
 
 ## Features:
-* Full CRUD capabilies with a restful api.
+* Full CRUD capabilities with a restful api.
 * Fully functional database with restrictions on unvalidated data.
 * Asthectic GUI that can display large amounts of data.
 * Google maps api with unique user interaction.
@@ -20,15 +20,15 @@ To read the full documentation of the project in word download it from above.
 
 
 ## Documentation chapters:
-1. Project Overview
-2. Understanding the technologies
-3. Setting up the project
-4. Architecture and Design
-5. Home Page
-6. Support Page
-7. Store Page
-8. Known Bugs and design flaws
-9. Conclusion
+1. Project Overview.
+2. Understanding the technologies.
+3. Setting up the project.
+4. Architecture and Design.
+5. Home Page.
+6. Support Page.
+7. Store Page.
+8. Known Bugs and design flaws.
+9. Conclusion.
 
 
 ## Requirements:
