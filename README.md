@@ -2,13 +2,13 @@
 To read the full documentation of the project in word download it from the documentation folder above.
 
 ## Technologies used:
-Languages: JavaScript,TypeScript,HTML,CSS.
-Libraries: Bootstrap, Mongoose.
-Frameworks: Angular 2.0, ExpressJs.
-Databases: MongoDB.
-Environments: Node.Js.
-NPMS: Mongoose, mongoose-unique-validator.
-Package Managers: Bower.
+- Languages: JavaScript,TypeScript,HTML,CSS.
+- Libraries: Bootstrap, Mongoose.
+- Frameworks: Angular 2.0, ExpressJs.
+- Databases: MongoDB.
+- Environments: Node.Js.
+- NPMS: Mongoose, mongoose-unique-validator.
+- Package Managers: Bower.
 
 
 ## Features:
@@ -24,11 +24,11 @@ Package Managers: Bower.
 2. Understanding the technologies
 3. Setting up the project
 4. Architecture and Design
-4.1. Home Page
-4.2. Support Page
-4.3. Store Page
-5. Known Bugs and design flaws
-6. Conclusion
+5. Home Page
+6. Support Page
+7. Store Page
+8. Known Bugs and design flaws
+9. Conclusion
 
 
 ## Requirements:
