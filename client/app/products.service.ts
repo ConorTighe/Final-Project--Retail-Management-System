@@ -31,6 +31,12 @@ export class ProductService {
         return this.http.post('http://localhost:3000/RMS/addproduct', body, {headers: headers});
     }
     
+    deleteServiceWithName(val: string): Observable<any> {
+    console.log(val);
+    return this.http
+      .delete('http://localhost:3000/RMS/productdelete/'+ val);
+  }
+    
     patchQty(qty: number): Observable<any> {
         console.log(qty);
         const headers = new Headers({'Content-Type': 'application/json'});

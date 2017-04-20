@@ -156,6 +156,21 @@ export class MapsComponent implements OnInit {
             );
     
         }
+        
+         onDeleteProduct(name: string) {
+            var retVal = confirm("Do you want to continue ?");
+            if( retVal == true ){
+       this.productService
+      .deleteServiceWithName(name)
+      .subscribe(
+          result => console.log(result),
+          error => console.error(error)
+        );
+        }else{
+            alert("Delete cancled!");
+                  return false;
+        }
+    }
 
     }
     

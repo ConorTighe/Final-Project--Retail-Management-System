@@ -113,6 +113,18 @@ var MapsComponent = (function () {
         this.productService.saveProduct(product)
             .subscribe(function () { return console.log('Success!'); }, function (error) { return console.error(error); });
     };
+    MapsComponent.prototype.onDeleteProduct = function (name) {
+        var retVal = confirm("Do you want to continue ?");
+        if (retVal == true) {
+            this.productService
+                .deleteServiceWithName(name)
+                .subscribe(function (result) { return console.log(result); }, function (error) { return console.error(error); });
+        }
+        else {
+            alert("Delete cancled!");
+            return false;
+        }
+    };
     return MapsComponent;
 }());
 MapsComponent = __decorate([

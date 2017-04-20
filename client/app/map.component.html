@@ -25,6 +25,11 @@
             <button type="button" class="btn btn-info" onClick="window.location.reload()" (click)="onPlusQty(product.qty)"><span class="glyphicon glyphicon-arrow-up"></span></button>
             <button type="button" class="btn btn-info" onClick="window.location.reload()" (click)="onMinusQty(product.qty)"><span class="glyphicon glyphicon-arrow-down"></span></button></div></td>
         <td>{{ product.price }}</td>
+          <span class="pull-right">
+                        <button type="button" class="btn btn-danger" aria-label="Left Align" (click)="onDeleteProduct(product.productName)">
+                        <span class="glyphicon glyphicon-remove-sign pull-right" aria-hidden="true"></span>
+                        </button>
+          </span>
       </tr>
       </tbody>
   </table>

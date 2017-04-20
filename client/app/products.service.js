@@ -38,6 +38,11 @@ var ProductService = (function () {
         var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
         return this.http.post('http://localhost:3000/RMS/addproduct', body, { headers: headers });
     };
+    ProductService.prototype.deleteServiceWithName = function (val) {
+        console.log(val);
+        return this.http
+            .delete('http://localhost:3000/RMS/productdelete/' + val);
+    };
     ProductService.prototype.patchQty = function (qty) {
         console.log(qty);
         var headers = new http_1.Headers({ 'Content-Type': 'application/json' });

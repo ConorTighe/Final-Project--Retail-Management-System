@@ -194,6 +194,19 @@ router.delete('/RMS/employeedelete/:empId', function (req, res) {
  }); 
 });
 
+router.delete('/RMS/productdelete/:productName', function (req, res) {
+    
+  Products.remove({productName: req.params.productName}, function(err, message) {
+      console.log("got inside");
+    if(err) { 
+       return res.send({status: "200", response: "fail"});
+    }else{
+        console.log("it worked?");
+    }
+      
+ }); 
+});
+
 
 
 
