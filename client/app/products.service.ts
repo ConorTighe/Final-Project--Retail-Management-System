@@ -25,6 +25,12 @@ export class ProductService {
             });
     }
     
+    saveProduct(product: Product): Observable<any> {
+        const body = JSON.stringify(product);
+        const headers = new Headers({'Content-Type': 'application/json'});
+        return this.http.post('http://localhost:3000/RMS/addproduct', body, {headers: headers});
+    }
+    
     patchQty(qty: number): Observable<any> {
         console.log(qty);
         const headers = new Headers({'Content-Type': 'application/json'});

@@ -117,6 +117,32 @@ router.post('/RMS/employee', function(req, res, next) {
     });
 });
 
+router.post('/RMS/addproduct', function(req, res, next) {
+    console.log(req.body.productName);
+    console.log(req.body.qty);
+    console.log(req.body.price);
+    
+    var product = new Products({
+        productName: req.body.productName,
+        qty: req.body.qty,
+        price: req.body.price
+    });
+    
+    product.save(function(err, result) {
+        if (err) {
+            console.log(err);
+            return res.status(500).json({
+                product: 'Error while saving data!'
+            });
+        }
+        console.log("SUCCESS");
+        console.log(result);
+        res.status(201).json({
+            product: 'Saved data successfully'
+        });
+    });
+});
+
 router.post('/RMS/store', function(req, res, next) {
    
     var store = new Stores({

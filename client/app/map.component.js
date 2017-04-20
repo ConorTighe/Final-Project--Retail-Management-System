@@ -13,6 +13,7 @@ var core_1 = require("@angular/core");
 var store_service_1 = require("./store.service");
 var store_model_1 = require("./store.model");
 var products_service_1 = require("./products.service");
+var product_model_1 = require("./product.model");
 var employee_service_1 = require("./employee.service");
 var MapsComponent = (function () {
     function MapsComponent(storeService, productService, messageService) {
@@ -104,6 +105,12 @@ var MapsComponent = (function () {
     MapsComponent.prototype.onMinusQty = function (qty) {
         this.newQty = qty - 1;
         this.productService.patchQty(this.newQty)
+            .subscribe(function () { return console.log('Success!'); }, function (error) { return console.error(error); });
+    };
+    MapsComponent.prototype.onAddProduct = function () {
+        var product = new product_model_1.Product(this.pname, this.qty, this.price);
+        this.products.push(product);
+        this.productService.saveProduct(product)
             .subscribe(function () { return console.log('Success!'); }, function (error) { return console.error(error); });
     };
     return MapsComponent;

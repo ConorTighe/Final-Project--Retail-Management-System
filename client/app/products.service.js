@@ -33,6 +33,11 @@ var ProductService = (function () {
             return msgArray;
         });
     };
+    ProductService.prototype.saveProduct = function (product) {
+        var body = JSON.stringify(product);
+        var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
+        return this.http.post('http://localhost:3000/RMS/addproduct', body, { headers: headers });
+    };
     ProductService.prototype.patchQty = function (qty) {
         console.log(qty);
         var headers = new http_1.Headers({ 'Content-Type': 'application/json' });

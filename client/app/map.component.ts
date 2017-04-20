@@ -24,6 +24,9 @@ export class MapsComponent implements OnInit {
    twittergrid: string;
    newQty: number;
    emps: string;
+   pname: string;
+   qty: Number;
+   price: Number;
    
    
   ngOnInit() {
@@ -135,6 +138,18 @@ export class MapsComponent implements OnInit {
     onMinusQty(qty: number){
         this.newQty = qty - 1;
         this.productService.patchQty(this.newQty)
+            .subscribe(
+                () => console.log('Success!'),
+                error => console.error(error)
+            );
+    
+        }
+        
+    onAddProduct(){
+    
+        const product = new Product(this.pname,this.qty,this.price);
+        this.products.push(product);
+        this.productService.saveProduct(product)
             .subscribe(
                 () => console.log('Success!'),
                 error => console.error(error)

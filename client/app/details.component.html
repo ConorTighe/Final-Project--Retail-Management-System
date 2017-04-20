@@ -9,20 +9,30 @@
             <div [attr.id]="'collapseOne_' + i" class="panel-collapse collapse">
                 <div class="panel-body">
                   <span class="pull-left">
-                    <label for="ex1">First Name: {{ message.fname }} </label>
-                        <input class="form-control" type="text" placeholder="{{message.firstName}}" [(ngModel)]="fname">
-                      <label for="ex1">Last Name: {{ message.lname }} </label>
-                        <input class="form-control" type="text" placeholder="{{message.lastName}}" [(ngModel)]="lname">
-                      <label for="ex1">Employee Job: {{ message.job }} </label>
-                        <input class="form-control" type="text" placeholder="{{message.job}}" [(ngModel)]="occu">
-                      <label for="ex1">Employee Phone: {{ message.num }} </label>
-                        <input class="form-control" type="text" placeholder="{{message.num}}" [(ngModel)]="number">
-                      <label for="ex1">Employee Store: {{ message.storeName }} </label>
+                    <label for="ex1">First Name: {{ message.firstName }} </label>
+                        <input class="form-control" type="text" placeholder="Enter new first name here" [(ngModel)]="fname">
+                      <label for="ex1">Last Name: {{ message.lastName }} </label>
+                        <input class="form-control" type="text" placeholder="Enter new last name here" [(ngModel)]="lname">
+                      <label for="ex1">Job: {{ message.job }} </label>
+                        <select type="text" class="form-control" [(ngModel)]="occu">
+                            <option>Sales</option>
+                            <option>Technician</option>
+                            <option>Manager</option>
+                            <option>Customer Support</option>
+                            <option>Customer Support Leader</option>
+                            <option>Programmer</option>
+                            <option>Operations Manager</option>
+                            <option>Supplier</option>
+                            <option>Security</option>
+                        </select>
+                      <label for="ex1">Phone: {{ message.num }} </label>
+                        <input class="form-control" type="text" placeholder="Enter new number" [(ngModel)]="number">
+                      <label for="ex1">Store: {{ message.storeName }} </label>
                         <select type="text" class="form-control" id="loc" [(ngModel)]="storeN">
                             <option *ngFor="let store of stores;">{{ store.storeName }}</option>
                         </select>
                       <label for="ex1">Employee Email: {{ message.email }} </label>
-                        <input class="form-control" type="email" placeholder="{{message.email}}" [(ngModel)]="email">
+                        <input class="form-control" type="email" placeholder="Enter new email here" [(ngModel)]="email">
                   </span>
                     <div class="col-md-2 col-md-offset-5">
                         <button type="button" class="btn btn-warning" aria-label="Left Align" (click)="onUpdateMessage(message.empId)">

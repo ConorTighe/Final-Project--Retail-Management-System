@@ -3,7 +3,10 @@
   <!-- Default panel contents -->
   <div class="panel-heading">Store Products</div>
   <div class="panel-body">
-    <p></p>
+     <input class="form-control" type="text" placeholder="Enter name" [(ngModel)]="pname">
+     <input class="form-control" type="text" placeholder="Enter quantity" [(ngModel)]="qty">
+     <input class="form-control" type="text" placeholder="Enter price" [(ngModel)]="price">
+     <button id="newproductBtn" class="btn btn-primary" (click)="onAddProduct()">Submit Product</button>
   </div>
     
   <!-- Table -->
@@ -19,8 +22,8 @@
       <tr>
         <td>{{ product.productName }}</td>
         <td><div> {{ product.qty }}
-            <button type="button" class="btn btn-info" (click)="onPlusQty(product.qty)"><span class="glyphicon glyphicon-arrow-up"></span></button>
-            <button type="button" class="btn btn-info" (click)="onMinusQty(product.qty)"><span class="glyphicon glyphicon-arrow-down"></span></button></div></td>
+            <button type="button" class="btn btn-info" onClick="window.location.reload()" (click)="onPlusQty(product.qty)"><span class="glyphicon glyphicon-arrow-up"></span></button>
+            <button type="button" class="btn btn-info" onClick="window.location.reload()" (click)="onMinusQty(product.qty)"><span class="glyphicon glyphicon-arrow-down"></span></button></div></td>
         <td>{{ product.price }}</td>
       </tr>
       </tbody>
