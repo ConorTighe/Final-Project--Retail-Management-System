@@ -1,5 +1,5 @@
 # Retail Managment system - Final Year Project
-To read the full documentation of the project in word download it from the documentation folder above.
+To read the full documentation of the project in word download it from above.
 
 ## Technologies used:
 - Languages: JavaScript,TypeScript,HTML,CSS.
@@ -7,7 +7,7 @@ To read the full documentation of the project in word download it from the docum
 - Frameworks: Angular 2.0, ExpressJs.
 - Databases: MongoDB.
 - Environments: Node.Js.
-- NPMS: Mongoose, mongoose-unique-validator.
+- NPMs: Mongoose, mongoose-unique-validator.
 - Package Managers: Bower.
 
 
@@ -33,6 +33,6 @@ To read the full documentation of the project in word download it from the docum
 
 ## Requirements:
 * Mongodb installed.
-* nodejs installed.
+* Nodejs installed.
 * npm angular2,expressjs and mongoose installed.
-* access to http://127.0.0.1:3000/.
+* Access to http://127.0.0.1:3000/.
