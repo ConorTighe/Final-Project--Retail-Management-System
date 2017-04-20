@@ -21,7 +21,7 @@
       <tbody>
       <tr>
         <td>{{ product.productName }}</td>
-        <td><div> {{ product.qty }}
+        <td><div > {{ product.qty }}
             <button type="button" class="btn btn-info" onClick="window.location.reload()" (click)="onPlusQty(product.qty)"><span class="glyphicon glyphicon-arrow-up"></span></button>
             <button type="button" class="btn btn-info" onClick="window.location.reload()" (click)="onMinusQty(product.qty)"><span class="glyphicon glyphicon-arrow-down"></span></button></div></td>
         <td>{{ product.price }}</td>

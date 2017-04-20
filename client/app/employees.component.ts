@@ -40,6 +40,8 @@ export class EmployeesComponent implements OnInit {
 
     onAddMessage() { 
     
+        var retVal = confirm("Do you want to continue ?");
+            if( retVal == true ){
         const message = new Message(this.fname,this.lname,this.empId,this.num,this.job,this.storeN,this.email);
         console.log(message);
         console.log(this.storeN);
@@ -49,6 +51,9 @@ export class EmployeesComponent implements OnInit {
                 () => console.log('Success!'),
                 error => console.error(error)
             );
+        }else{
+            alert("Submission canceld");
+        }
     }
     
 }

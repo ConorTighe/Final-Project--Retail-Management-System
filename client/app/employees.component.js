@@ -29,12 +29,18 @@ var EmployeesComponent = (function () {
         }, function (error) { return console.error(error); });
     };
     EmployeesComponent.prototype.onAddMessage = function () {
-        var message = new employee_model_1.Message(this.fname, this.lname, this.empId, this.num, this.job, this.storeN, this.email);
-        console.log(message);
-        console.log(this.storeN);
-        this.messages.push(message);
-        this.messageService.saveMessage(message)
-            .subscribe(function () { return console.log('Success!'); }, function (error) { return console.error(error); });
+        var retVal = confirm("Do you want to continue ?");
+        if (retVal == true) {
+            var message = new employee_model_1.Message(this.fname, this.lname, this.empId, this.num, this.job, this.storeN, this.email);
+            console.log(message);
+            console.log(this.storeN);
+            this.messages.push(message);
+            this.messageService.saveMessage(message)
+                .subscribe(function () { return console.log('Success!'); }, function (error) { return console.error(error); });
+        }
+        else {
+            alert("Submission canceld");
+        }
     };
     return EmployeesComponent;
 }());

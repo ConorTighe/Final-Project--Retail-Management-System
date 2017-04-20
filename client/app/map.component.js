@@ -27,7 +27,7 @@ var MapsComponent = (function () {
         var _this = this;
         var ireLatLng = { lat: 53.1424, lng: -7.6921 };
         this.map = new google.maps.Map(document.getElementById('map'), {
-            zoom: 8,
+            zoom: 7,
             center: ireLatLng
         });
         this.storeService.getStores()
@@ -87,7 +87,7 @@ var MapsComponent = (function () {
     };
     MapsComponent.prototype.onListEmp = function (name) {
         var _this = this;
-        this.emps = "Employees working here:\n";
+        this.emps = "Employees working at: " + name + "\n";
         this.messageService.getMessagesByStore(name)
             .subscribe(function (stores) {
             stores.forEach(function (store) {
@@ -108,10 +108,16 @@ var MapsComponent = (function () {
             .subscribe(function () { return console.log('Success!'); }, function (error) { return console.error(error); });
     };
     MapsComponent.prototype.onAddProduct = function () {
-        var product = new product_model_1.Product(this.pname, this.qty, this.price);
-        this.products.push(product);
-        this.productService.saveProduct(product)
-            .subscribe(function () { return console.log('Success!'); }, function (error) { return console.error(error); });
+        var retVal = confirm("Do you want to continue ?");
+        if (retVal == true) {
+            var product = new product_model_1.Product(this.pname, this.qty, this.price);
+            this.products.push(product);
+            this.productService.saveProduct(product)
+                .subscribe(function () { return console.log('Success!'); }, function (error) { return console.error(error); });
+        }
+        else {
+            alert("submission cancled");
+        }
     };
     MapsComponent.prototype.onDeleteProduct = function (name) {
         var retVal = confirm("Do you want to continue ?");

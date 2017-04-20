@@ -40,11 +40,16 @@ export class MessageService {
     }
 
     saveMessage(message: Message): Observable<any> {
+    var retVal = confirm("Do you want to continue ?");
+            if( retVal == true ){
         console.log(message);
         const body = JSON.stringify(message);
         console.log(body);
         const headers = new Headers({'Content-Type': 'application/json'});
         return this.http.post('http://localhost:3000/RMS/employee', body, {headers: headers});
+        }else{
+            alert("Submission cancled");
+        }
     }
     
   deleteServiceWithId( key: string, val: string): Observable<any> {

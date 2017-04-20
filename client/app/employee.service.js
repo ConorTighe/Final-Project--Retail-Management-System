@@ -48,11 +48,17 @@ var MessageService = (function () {
         });
     };
     MessageService.prototype.saveMessage = function (message) {
-        console.log(message);
-        var body = JSON.stringify(message);
-        console.log(body);
-        var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
-        return this.http.post('http://localhost:3000/RMS/employee', body, { headers: headers });
+        var retVal = confirm("Do you want to continue ?");
+        if (retVal == true) {
+            console.log(message);
+            var body = JSON.stringify(message);
+            console.log(body);
+            var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
+            return this.http.post('http://localhost:3000/RMS/employee', body, { headers: headers });
+        }
+        else {
+            alert("Submission cancled");
+        }
     };
     MessageService.prototype.deleteServiceWithId = function (key, val) {
         console.log(key);

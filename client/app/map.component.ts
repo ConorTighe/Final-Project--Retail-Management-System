@@ -21,7 +21,6 @@ export class MapsComponent implements OnInit {
    
    constructor(private storeService: StoreService, private productService: ProductService, private messageService: MessageService) {}
    map: any;
-   twittergrid: string;
    newQty: number;
    emps: string;
    pname: string;
@@ -33,7 +32,7 @@ export class MapsComponent implements OnInit {
    
    var ireLatLng = {lat: 53.1424, lng: -7.6921};   
    this.map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 8,
+          zoom: 7,
           center: ireLatLng
    });
 
@@ -112,7 +111,7 @@ export class MapsComponent implements OnInit {
         }
         
     onListEmp(name : string){
-    this.emps = "Employees working here:\n";
+    this.emps = "Employees working at: " + name + "\n";
         this.messageService.getMessagesByStore(name)
                     .subscribe(
                stores => {
@@ -147,6 +146,8 @@ export class MapsComponent implements OnInit {
         
     onAddProduct(){
     
+    var retVal = confirm("Do you want to continue ?");
+            if( retVal == true ){
         const product = new Product(this.pname,this.qty,this.price);
         this.products.push(product);
         this.productService.saveProduct(product)
@@ -154,23 +155,26 @@ export class MapsComponent implements OnInit {
                 () => console.log('Success!'),
                 error => console.error(error)
             );
+            }else{
+                alert("submission cancled");
+            }
     
         }
         
-         onDeleteProduct(name: string) {
+    onDeleteProduct(name: string) {
             var retVal = confirm("Do you want to continue ?");
             if( retVal == true ){
-       this.productService
-      .deleteServiceWithName(name)
-      .subscribe(
-          result => console.log(result),
-          error => console.error(error)
-        );
-        }else{
-            alert("Delete cancled!");
-                  return false;
+                this.productService
+                .deleteServiceWithName(name)
+            .subscribe(
+                result => console.log(result),
+                error => console.error(error)
+            );
+            }else{
+                alert("Delete cancled!");
+                return false;
+            }
         }
-    }
 
     }
     
