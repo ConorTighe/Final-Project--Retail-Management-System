@@ -34,5 +34,24 @@ To read the full documentation of the project in word download it from above.
 ## Requirements:
 * Mongodb installed.
 * Nodejs installed.
-* npm angular2,expressjs and mongoose installed.
+* Git or git bash to retrieve the project.
 * Access to http://127.0.0.1:3000/.
+
+## User Guide
+
+### Running the project:
+1. If you havn't already, go to the following links and download the appropriate installer for your system:
+* [Download Mongodb](https://www.google.comhttps://www.mongodb.com/download-center?jmp=nav#community)
+* [Download NodeJs v6.10](https://nodejs.org/en/)
+* [Download GitBash](https://git-scm.com/downloads)
+2. Clone the repo from Git to you desired directory.
+3. Inside the command prompt, navigate to the folder where the clone was placed and enter npm start.
+
+### App controls:
+Home,Support,Employees pages: Typical controls for the browser you use when navigating a web page.
+
+Stores page: The controls for my map are slightly different to interacting with regular Google Maps.
+- Click anywhere on the map and enter name of new store to insert a new store.
+- Hold the left mouse button and drap to move around the map.
+- Put two fingers on the touch pad and move the away from each other to zoom out and towards each other to zoom in.
+![Zooming in on stores:](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Store zoom feature")
