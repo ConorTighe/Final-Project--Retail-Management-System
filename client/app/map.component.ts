@@ -40,7 +40,7 @@ export class MapsComponent implements OnInit {
        .subscribe(
            stores => {
                this.stores = stores;
-               console.log(stores);
+               console.log('GET from stores');
                
                stores.forEach(store => {
                   this.onAddMarker(store.storeName, store.lat, store.long);
@@ -54,7 +54,7 @@ export class MapsComponent implements OnInit {
        .subscribe(
            products => {
                this.products = products;
-               console.log(products);
+               console.log('GET from products');
            },
            error => console.error(error)
     );
@@ -84,7 +84,7 @@ export class MapsComponent implements OnInit {
         const newStorePost = new Store(newStore,lt,ln);
         this.storeService.saveStore(newStorePost)
             .subscribe(
-                () => console.log('Success!'),
+                () => console.log('POST from stores'),
                 error => console.error(error)
             );
             
@@ -118,7 +118,7 @@ export class MapsComponent implements OnInit {
                stores.forEach(store => {
                   this.emps += store.job + " - " + store.firstName + " " + store.lastName + "\n";
             })
-               console.log(this.emps);
+               console.log('GET from employees');
                alert(this.emps);
             },
             error => console.error(error)
@@ -129,7 +129,7 @@ export class MapsComponent implements OnInit {
         this.newQty = qty + 1;
         this.productService.patchQty(this.newQty)
             .subscribe(
-                () => console.log('Success!'),
+                () => console.log('PATCH from products'),
                 error => console.error(error)
             );
         }
@@ -138,7 +138,7 @@ export class MapsComponent implements OnInit {
         this.newQty = qty - 1;
         this.productService.patchQty(this.newQty)
             .subscribe(
-                () => console.log('Success!'),
+                () => console.log('PATCH from products'),
                 error => console.error(error)
             );
     
@@ -152,7 +152,7 @@ export class MapsComponent implements OnInit {
         this.products.push(product);
         this.productService.saveProduct(product)
             .subscribe(
-                () => console.log('Success!'),
+                () => console.log('POST from products'),
                 error => console.error(error)
             );
             }else{
@@ -167,7 +167,7 @@ export class MapsComponent implements OnInit {
                 this.productService
                 .deleteServiceWithName(name)
             .subscribe(
-                result => console.log(result),
+                result => console.log('DELETE from products'),
                 error => console.error(error)
             );
             }else{

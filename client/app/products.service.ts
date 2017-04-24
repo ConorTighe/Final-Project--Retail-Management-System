@@ -12,10 +12,8 @@ export class ProductService {
     getProducts(): Observable<any> {
         return this.http.get('http://localhost:3000/RMS/products')
             .map( (data: Response) => {
-                console.log("got here products!");
                 const extracted = data.json();
                 const msgArray: Product[] = [];
-                console.log("got products here!");
                 let product;
                 for (let element of extracted.data) {
                     product = new Product(element.productName, element.qty, element.price);

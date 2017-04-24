@@ -25,18 +25,22 @@ var EmployeesComponent = (function () {
         this.storeService.getStores()
             .subscribe(function (stores) {
             _this.stores = stores;
-            console.log(stores);
+            console.log("GET from employees");
         }, function (error) { return console.error(error); });
     };
     EmployeesComponent.prototype.onAddMessage = function () {
+        var atSymbol = this.email.includes("@");
+        var dotCom = this.email.endsWith(".com");
+        if (atSymbol == false || dotCom == false) {
+            alert("Email must contain @ and end with .com");
+            return;
+        }
         var retVal = confirm("Do you want to continue ?");
         if (retVal == true) {
             var message = new employee_model_1.Message(this.fname, this.lname, this.empId, this.num, this.job, this.storeN, this.email);
-            console.log(message);
-            console.log(this.storeN);
             this.messages.push(message);
             this.messageService.saveMessage(message)
-                .subscribe(function () { return console.log('Success!'); }, function (error) { return console.error(error); });
+                .subscribe(function () { return console.log('POST from employees'); }, function (error) { return alert(error); });
         }
         else {
             alert("Submission canceld");

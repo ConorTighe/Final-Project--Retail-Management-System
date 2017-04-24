@@ -32,28 +32,35 @@ export class EmployeesComponent implements OnInit {
        .subscribe(
            stores => {
                this.stores = stores;
-               console.log(stores);  
+               console.log("GET from employees");  
            },
            error => console.error(error)
         );
     }
 
     onAddMessage() { 
+        var atSymbol = this.email.includes("@");
+        var dotCom = this.email.endsWith(".com");
+        
+        if(atSymbol == false || dotCom == false){
+            alert("Email must contain @ and end with .com");
+            return;
+        }
     
         var retVal = confirm("Do you want to continue ?");
+      
             if( retVal == true ){
-        const message = new Message(this.fname,this.lname,this.empId,this.num,this.job,this.storeN,this.email);
-        console.log(message);
-        console.log(this.storeN);
-        this.messages.push(message);
-        this.messageService.saveMessage(message)
-            .subscribe(
-                () => console.log('Success!'),
-                error => console.error(error)
-            );
-        }else{
-            alert("Submission canceld");
-        }
+                const message = new Message(this.fname,this.lname,this.empId,this.num,this.job,this.storeN,this.email);
+                this.messages.push(message);
+                this.messageService.saveMessage(message)
+                .subscribe(
+                    () => console.log('POST from employees'),
+                    error => alert(error)
+                );
+            }else{
+                alert("Submission canceld");
+            }
+        
     }
     
 }

@@ -64,7 +64,7 @@ var MessageService = (function () {
         console.log(key);
         console.log(val);
         return this.http
-            .delete('http://localhost:3000/RMS/messagedelete/' + val);
+            .delete('http://localhost:3000/RMS/employeedelete/' + val);
     };
     MessageService.prototype.updateServiceWithId = function (message) {
         console.log(message);

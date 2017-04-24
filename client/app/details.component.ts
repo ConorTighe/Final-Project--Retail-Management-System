@@ -36,7 +36,7 @@ export class DetailsComponent implements OnInit {
        .subscribe(
            stores => {
                this.stores = stores;
-               console.log(stores);  
+               console.log('GET from employees');  
            },
            error => console.error(error)
         );
@@ -48,7 +48,7 @@ export class DetailsComponent implements OnInit {
        this.messageService
       .deleteServiceWithId("empId", id)
       .subscribe(
-          result => console.log(result),
+          result => console.log('DELETE from employees'),
           error => console.error(error)
         );
         }else{
@@ -58,15 +58,21 @@ export class DetailsComponent implements OnInit {
     }
     
     onUpdateMessage(id: Number) {
+        var atSymbol = this.email.includes("@");
+        var dotCom = this.email.endsWith(".com");
+        
+        if(atSymbol == false || dotCom == false){
+            alert("Email must contain @ and end with .com");
+            return;
+        }
+        
         var retVal = confirm("Do you want to continue ?");
             if( retVal == true ){
-        const message = new Message(this.fname,this.lname,id,this.number,this.occu,this.storeN,this.email);
-        console.log(this.fname);console.log(this.lname);
-        console.log(id);console.log(this.occu);console.log(this.storeN);
-        this.messages.push(message);
-        this.messageService.updateServiceWithId(message)
+            const message = new Message(this.fname,this.lname,id,this.number,this.occu,this.storeN,this.email);
+            this.messages.push(message);
+            this.messageService.updateServiceWithId(message)
             .subscribe(
-                () => console.log('Success!'),
+                () => console.log('POST from employees'),
                 error => console.error(error)
             );
         }

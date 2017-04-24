@@ -6,7 +6,7 @@
      <input class="form-control" type="text" placeholder="Enter name" [(ngModel)]="pname">
      <input class="form-control" type="text" placeholder="Enter quantity" [(ngModel)]="qty">
      <input class="form-control" type="text" placeholder="Enter price" [(ngModel)]="price">
-     <button id="newproductBtn" class="btn btn-primary" (click)="onAddProduct()">Submit Product</button>
+     <button id="newproductBtn" class="btn btn-primary" onClick="window.location.reload()" (click)="onAddProduct()">Submit Product</button>
   </div>
     
   <!-- Table -->
@@ -20,13 +20,13 @@
     </thead>
       <tbody>
       <tr>
-        <td>{{ product.productName }}</td>
-        <td><div > {{ product.qty }}
+        <td><div style="vertical-align:left;">{{ product.productName }}</div></td>
+        <td><div> {{ product.qty }}
             <button type="button" class="btn btn-info" onClick="window.location.reload()" (click)="onPlusQty(product.qty)"><span class="glyphicon glyphicon-arrow-up"></span></button>
             <button type="button" class="btn btn-info" onClick="window.location.reload()" (click)="onMinusQty(product.qty)"><span class="glyphicon glyphicon-arrow-down"></span></button></div></td>
-        <td>{{ product.price }}</td>
+        <td><div>{{ product.price }}</div></td>
           <span class="pull-right">
-                        <button type="button" class="btn btn-danger" aria-label="Left Align" (click)="onDeleteProduct(product.productName)">
+                        <button type="button" class="btn btn-danger" aria-label="Left Align" onClick="window.location.reload()" (click)="onDeleteProduct(product.productName)">
                         <span class="glyphicon glyphicon-remove-sign pull-right" aria-hidden="true"></span>
                         </button>
           </span>

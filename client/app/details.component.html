@@ -35,12 +35,12 @@
                         <input class="form-control" type="email" placeholder="Enter new email here" [(ngModel)]="email">
                   </span>
                     <div class="col-md-2 col-md-offset-5">
-                        <button type="button" class="btn btn-warning" aria-label="Left Align" (click)="onUpdateMessage(message.empId)">
+                        <button type="button" class="btn btn-warning" aria-label="Left Align" onClick="window.location.reload()" (click)="onUpdateMessage(message.empId)">
                         <span class="glyphicon glyphicon-pencil pull-right" aria-hidden="true"></span>
                         </button>
                         </div>
                     <span class="pull-right">
-                        <button type="button" class="btn btn-danger" aria-label="Left Align" (click)="onDeleteMessage(message.empId)">
+                        <button type="button" class="btn btn-danger" aria-label="Left Align" onClick="window.location.reload()" (click)="onDeleteMessage(message.empId)">
                         <span class="glyphicon glyphicon-remove-sign pull-right" aria-hidden="true"></span>
                         </button>
                     </span>

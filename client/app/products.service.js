@@ -20,10 +20,8 @@ var ProductService = (function () {
     ProductService.prototype.getProducts = function () {
         return this.http.get('http://localhost:3000/RMS/products')
             .map(function (data) {
-            console.log("got here products!");
             var extracted = data.json();
             var msgArray = [];
-            console.log("got products here!");
             var product;
             for (var _i = 0, _a = extracted.data; _i < _a.length; _i++) {
                 var element = _a[_i];

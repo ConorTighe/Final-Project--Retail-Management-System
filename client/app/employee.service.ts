@@ -56,7 +56,7 @@ export class MessageService {
     console.log(key);
     console.log(val);
     return this.http
-      .delete('http://localhost:3000/RMS/messagedelete/'+ val);
+      .delete('http://localhost:3000/RMS/employeedelete/'+ val);
   }
   
   updateServiceWithId(message: Message): Observable<any> {

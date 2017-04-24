@@ -28,7 +28,7 @@ var DetailsComponent = (function () {
         this.storeService.getStores()
             .subscribe(function (stores) {
             _this.stores = stores;
-            console.log(stores);
+            console.log('GET from employees');
         }, function (error) { return console.error(error); });
     };
     DetailsComponent.prototype.onDeleteMessage = function (id) {
@@ -36,7 +36,7 @@ var DetailsComponent = (function () {
         if (retVal == true) {
             this.messageService
                 .deleteServiceWithId("empId", id)
-                .subscribe(function (result) { return console.log(result); }, function (error) { return console.error(error); });
+                .subscribe(function (result) { return console.log('DELETE from employees'); }, function (error) { return console.error(error); });
         }
         else {
             alert("Delete cancled!");
@@ -44,17 +44,18 @@ var DetailsComponent = (function () {
         }
     };
     DetailsComponent.prototype.onUpdateMessage = function (id) {
+        var atSymbol = this.email.includes("@");
+        var dotCom = this.email.endsWith(".com");
+        if (atSymbol == false || dotCom == false) {
+            alert("Email must contain @ and end with .com");
+            return;
+        }
         var retVal = confirm("Do you want to continue ?");
         if (retVal == true) {
             var message = new employee_model_1.Message(this.fname, this.lname, id, this.number, this.occu, this.storeN, this.email);
-            console.log(this.fname);
-            console.log(this.lname);
-            console.log(id);
-            console.log(this.occu);
-            console.log(this.storeN);
             this.messages.push(message);
             this.messageService.updateServiceWithId(message)
-                .subscribe(function () { return console.log('Success!'); }, function (error) { return console.error(error); });
+                .subscribe(function () { return console.log('POST from employees'); }, function (error) { return console.error(error); });
         }
         else {
             alert("Edit cancled!");

@@ -1,5 +1,9 @@
 # Retail Managment System - Final Year Project
-To read the full documentation of the project in word download it from above.
+This is a system for high ranking managers to take care of there stores and staff region-wide or nation-wide, read the full documentation of the project in word by downloading it from above.
+
+![Home Screen:](gitpic1.png "Home Screen")
+
+![What each panel does:](gitpic2.png "Getting started")
 
 ## Technologies used:
 - Languages: JavaScript,TypeScript,HTML,CSS.
@@ -52,6 +56,6 @@ Home,Support,Employees pages: Typical controls for the browser you use when navi
 
 Stores page: The controls for my map are slightly different to interacting with regular Google Maps.
 - Click anywhere on the map and enter name of new store to insert a new store.
-- Hold the left mouse button and drap to move around the map.
+- Hold the left mouse button and drag to move around the map.
 - Put two fingers on the touch pad and move the away from each other to zoom out and towards each other to zoom in.
-![Zooming in on stores:](mapcontrols.png "Store zoom feature")
+![Zooming in on stores:](client\app\img\mapcontrols.png "Store zoom feature")

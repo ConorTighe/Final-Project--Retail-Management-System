@@ -33,7 +33,7 @@ var MapsComponent = (function () {
         this.storeService.getStores()
             .subscribe(function (stores) {
             _this.stores = stores;
-            console.log(stores);
+            console.log('GET from stores');
             stores.forEach(function (store) {
                 _this.onAddMarker(store.storeName, store.lat, store.long);
                 console.log(store.storeName + "added");
@@ -42,7 +42,7 @@ var MapsComponent = (function () {
         this.productService.getProducts()
             .subscribe(function (products) {
             _this.products = products;
-            console.log(products);
+            console.log('GET from products');
         }, function (error) { return console.error(error); });
         google.maps.event.addListener(this.map, 'click', function (event) {
             console.log(event.latLng);
@@ -66,7 +66,7 @@ var MapsComponent = (function () {
             });
             var newStorePost = new store_model_1.Store(newStore, lt, ln);
             this.storeService.saveStore(newStorePost)
-                .subscribe(function () { return console.log('Success!'); }, function (error) { return console.error(error); });
+                .subscribe(function () { return console.log('POST from stores'); }, function (error) { return console.error(error); });
             marker.addListener('click', function () {
                 _this.onListEmp(newStore);
             });
@@ -93,19 +93,19 @@ var MapsComponent = (function () {
             stores.forEach(function (store) {
                 _this.emps += store.job + " - " + store.firstName + " " + store.lastName + "\n";
             });
-            console.log(_this.emps);
+            console.log('GET from employees');
             alert(_this.emps);
         }, function (error) { return console.error(error); });
     };
     MapsComponent.prototype.onPlusQty = function (qty) {
         this.newQty = qty + 1;
         this.productService.patchQty(this.newQty)
-            .subscribe(function () { return console.log('Success!'); }, function (error) { return console.error(error); });
+            .subscribe(function () { return console.log('PATCH from products'); }, function (error) { return console.error(error); });
     };
     MapsComponent.prototype.onMinusQty = function (qty) {
         this.newQty = qty - 1;
         this.productService.patchQty(this.newQty)
-            .subscribe(function () { return console.log('Success!'); }, function (error) { return console.error(error); });
+            .subscribe(function () { return console.log('PATCH from products'); }, function (error) { return console.error(error); });
     };
     MapsComponent.prototype.onAddProduct = function () {
         var retVal = confirm("Do you want to continue ?");
@@ -113,7 +113,7 @@ var MapsComponent = (function () {
             var product = new product_model_1.Product(this.pname, this.qty, this.price);
             this.products.push(product);
             this.productService.saveProduct(product)
-                .subscribe(function () { return console.log('Success!'); }, function (error) { return console.error(error); });
+                .subscribe(function () { return console.log('POST from products'); }, function (error) { return console.error(error); });
         }
         else {
             alert("submission cancled");
@@ -124,7 +124,7 @@ var MapsComponent = (function () {
         if (retVal == true) {
             this.productService
                 .deleteServiceWithName(name)
-                .subscribe(function (result) { return console.log(result); }, function (error) { return console.error(error); });
+                .subscribe(function (result) { return console.log('DELETE from products'); }, function (error) { return console.error(error); });
         }
         else {
             alert("Delete cancled!");
