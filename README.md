@@ -54,4 +54,4 @@ Stores page: The controls for my map are slightly different to interacting with 
 - Click anywhere on the map and enter name of new store to insert a new store.
 - Hold the left mouse button and drap to move around the map.
 - Put two fingers on the touch pad and move the away from each other to zoom out and towards each other to zoom in.
-![Zooming in on stores:](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Store zoom feature")
+![Zooming in on stores:](mapcontrols.png "Store zoom feature")
